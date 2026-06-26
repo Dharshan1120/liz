@@ -50,30 +50,311 @@ body.loading {
   animation: pulse 5s infinite alternate-reverse;
 }
 
-/* AVATAR CSS ART */
-.loader-avatar-wrap {
+/* ---------- DUAL AVATARS CONTAINER ---------- */
+.loader-avatars-wrap {
   position: relative;
-  width: 200px; height: 250px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 420px;
+  height: 250px;
   z-index: 2;
   transform: scale(0.9);
 }
 
-.loader-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid rgba(217, 70, 239, 0.4);
-  box-shadow: 0 0 30px rgba(217, 70, 239, 0.3);
+.loader-avatars-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse, rgba(108, 99, 255, 0.25) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(20px);
+  animation: pulse 3s infinite alternate;
 }
 
-.loader-photo-glow {
+/* Individual Avatars */
+.dev-avatar {
+  position: relative;
+  width: 180px;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.dev-head {
   position: absolute;
-  top: -10px; left: -10px; right: -10px; bottom: -10px;
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.4) 0%, transparent 70%);
-  z-index: -1;
-  filter: blur(10px);
-  animation: pulse 2s infinite alternate;
+  top: 15px; left: 50%;
+  transform: translateX(-50%);
+  width: 90px; height: 110px;
+  z-index: 3;
+}
+
+.dev-face {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 85px;
+  background: #ffb48f;
+  border-radius: 40px 40px 45px 45px;
+  box-shadow: inset -10px 0 20px rgba(0,0,0,0.15), inset 10px 0 20px rgba(249, 115, 22, 0.3);
+  z-index: 2;
+}
+
+/* Dharshan's Hair (Stylish Spiky Hair) */
+.dev-hair-dharshan {
+  position: absolute;
+  top: -15px; left: -10px;
+  width: 110px; height: 60px;
+  background: #1e1b29;
+  border-radius: 50px 50px 10px 10px;
+  box-shadow: -5px -3px 0 #3b1354, 5px -2px 0 #1e1b29;
+  z-index: 3;
+}
+.dev-hair-dharshan::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: 15px;
+  width: 50px; height: 35px;
+  background: #1e1b29;
+  border-radius: 50%;
+  box-shadow: 25px -4px 0 #1e1b29, -15px 12px 0 #1e1b29;
+}
+
+/* Baumendhra's Hair (Curly / Wavy Hair) */
+.dev-hair-baum {
+  position: absolute;
+  top: -15px; left: -10px;
+  width: 110px; height: 55px;
+  background: #13121d;
+  border-radius: 40px 40px 20px 20px;
+  box-shadow: 0 -4px 0 #4f46e5;
+  z-index: 3;
+}
+.dev-hair-baum::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 10px;
+  width: 25px; height: 25px;
+  background: #13121d;
+  border-radius: 50%;
+  box-shadow: 20px -3px 0 #13121d, 40px -2px 0 #13121d, 60px 2px 0 #13121d;
+}
+
+.dev-ear {
+  position: absolute;
+  bottom: 25px;
+  width: 16px; height: 22px;
+  background: #ffaa80;
+  border-radius: 10px;
+  z-index: 1;
+}
+.dev-ear.left { left: -7px; box-shadow: inset 3px 0 5px rgba(249, 115, 22, 0.3); }
+.dev-ear.right { right: -7px; box-shadow: inset -3px 0 5px rgba(0,0,0,0.15); }
+
+/* Glasses & Reflections */
+.dev-glasses {
+  position: absolute;
+  top: 25px; left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 4;
+}
+.dev-glasses::after {
+  content: '';
+  position: absolute;
+  top: 10px; left: 32px;
+  width: 12px; height: 3px;
+  background: #111;
+}
+.dev-glasses .lens {
+  width: 32px; height: 24px;
+  border: 3px solid #111;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dev-glasses .lens::after {
+  content: '';
+  position: absolute;
+  top: -10px; left: -10px;
+  width: 12px; height: 40px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(30deg);
+  animation: shine 3s infinite ease-in-out;
+}
+.lens-code-left, .lens-code-right {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+  color: #a78bfa;
+  text-shadow: 0 0 5px rgba(167, 139, 250, 0.8);
+  opacity: 0.8;
+}
+
+@keyframes shine {
+  0%, 100% { transform: rotate(30deg) translateX(-20px); }
+  50% { transform: rotate(30deg) translateX(40px); }
+}
+
+.dev-nose {
+  position: absolute;
+  bottom: 22px; left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 16px;
+  background: #f49b70;
+  border-radius: 8px;
+  z-index: 4;
+}
+
+.dev-smile {
+  position: absolute;
+  bottom: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 20px; height: 10px;
+  border-bottom: 3px solid #b85a3a;
+  border-radius: 0 0 10px 10px;
+  z-index: 4;
+}
+
+/* Body & Shirts */
+.dev-body {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; height: 120px;
+  z-index: 1;
+}
+
+.dev-shirt {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 140px; height: 100px;
+  border-radius: 60px 60px 0 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  overflow: hidden;
+}
+.dev-shirt span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  height: max-content;
+}
+
+/* Dharshan Shirt (Orange) */
+.dharshan .dev-shirt {
+  background: #ea580c;
+  box-shadow: inset -15px 0 20px rgba(0,0,0,0.3), inset 15px 0 20px rgba(251, 146, 60, 0.5);
+}
+/* Baumendhra Shirt (Blue) */
+.baumendhra .dev-shirt {
+  background: #2563eb;
+  box-shadow: inset -15px 0 20px rgba(0,0,0,0.3), inset 15px 0 20px rgba(96, 165, 250, 0.5);
+}
+
+/* Typing Hands Animation */
+.dev-desk-hands {
+  position: absolute;
+  bottom: -5px; left: 0;
+  width: 100%; height: 40px;
+  z-index: 5;
+}
+
+.hand {
+  position: absolute;
+  width: 18px; height: 18px;
+  background: #ffc4a8;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.hand.left { left: 35px; }
+.hand.right { right: 35px; }
+
+/* Typing Micro-Animations */
+.typing-left {
+  animation: typeHandLeft 0.2s infinite alternate;
+}
+.typing-right {
+  animation: typeHandRight 0.25s infinite alternate;
+}
+
+@keyframes typeHandLeft {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-6px) scale(1.05); }
+}
+@keyframes typeHandRight {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-7px) scale(1.05); }
+}
+
+/* Coffee Mug & Steaming */
+.mug-steaming {
+  position: absolute;
+  bottom: 25px; left: 20px;
+  width: 25px; height: 35px;
+  z-index: 4;
+}
+.mug-steaming::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 18px; height: 18px;
+  background: #ffffff;
+  border-radius: 3px 3px 6px 6px;
+  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.2);
+}
+.mug-steaming::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; right: 3px;
+  width: 8px; height: 10px;
+  border: 2px solid #ffffff;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}
+.hand.holding-mug {
+  left: 20px;
+  bottom: 2px;
+  width: 14px; height: 14px;
+  background: #ffc4a8;
+  z-index: 5;
+  animation: sipCoffee 4s infinite ease-in-out;
+}
+
+.steam {
+  position: absolute;
+  width: 2px; height: 10px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+  bottom: 20px;
+  opacity: 0;
+  filter: blur(1px);
+}
+.steam.s1 { left: 4px; animation: riseSteam 2s infinite ease-in; }
+.steam.s2 { left: 9px; animation: riseSteam 2s infinite ease-in 0.6s; height: 14px; }
+.steam.s3 { left: 14px; animation: riseSteam 2s infinite ease-in 1.2s; }
+
+@keyframes riseSteam {
+  0% { transform: translateY(0) scaleY(0.5); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-15px) scaleY(1.5); opacity: 0; }
+}
+
+@keyframes sipCoffee {
+  0%, 100% { transform: translateY(0); }
+  45%, 55% { transform: translateY(-12px) translateX(3px); }
 }
 
 /* Percentage & Loader Bar */
