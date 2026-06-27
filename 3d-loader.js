@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LOADING ANIMATION & 3D PARALLAX JS
+   LOADING ANIMATION & DEVICE STAGE PARALLAX
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,100 +8,93 @@ document.addEventListener('DOMContentLoaded', () => {
   const loaderPercent = document.getElementById('loaderPercent');
   const loaderBar = document.getElementById('loaderBar');
   const body = document.body;
-  
+
   let percent = 0;
-  
-  // Simulate loading progress
+
   const interval = setInterval(() => {
-    // Random increment between 1 and 8
     const increment = Math.floor(Math.random() * 8) + 1;
     percent += increment;
-    
+
     if (percent >= 100) {
       percent = 100;
       clearInterval(interval);
-      
-      // Update UI to 100%
+
       loaderPercent.textContent = percent;
       loaderBar.style.width = percent + '%';
-      
-      // Hide loader after a short delay
+
       setTimeout(() => {
         loaderScreen.classList.add('hidden');
         body.classList.remove('loading');
-        
-        // Trigger intro animation for 3D room
         introAnimation();
       }, 500);
     } else {
       loaderPercent.textContent = percent;
       loaderBar.style.width = percent + '%';
     }
-  }, 30); // 30ms intervals for smooth but fast loading
+  }, 30);
 
-  // 2. 3D Parallax Mouse Tracking
-  const roomScene = document.querySelector('.room-perspective');
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let hasStarted = false; // Flag to prevent tracking during intro
-  
-  // Mouse movement tracking
+  // 2. Subtle Mouse Parallax on Device Stage
+  // We tilt the entire device-stage slightly — safe because perspective is
+  // embedded in the element itself, so there is zero camera-clipping risk.
+  const stage = document.getElementById('deviceStage');
+  let targetTiltX = 4;   // resting rotateX in degrees (matches CSS default)
+  let targetTiltY = 0;
+  let currentTiltX = 4;
+  let currentTiltY = 0;
+  let parallaxActive = false;
+
   document.addEventListener('mousemove', (e) => {
-    if(!hasStarted) return;
-    
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    
-    // Normalize mouse position from -1 to 1
-    const mouseX = (e.clientX / windowWidth) * 2 - 1;
-    const mouseY = (e.clientY / windowHeight) * 2 - 1;
-    
-    // Max rotation angles (degrees)
-    const maxRotateY = 15;
-    const maxRotateX = 10;
-    
-    // Calculate target rotation
-    targetY = mouseX * maxRotateY;
-    targetX = -mouseY * maxRotateX + 5; // +5 to keep slight downward tilt
+    if (!parallaxActive) return;
+
+    const cx = window.innerWidth  / 2;
+    const cy = window.innerHeight / 2;
+
+    // Normalize: -1 to +1
+    const nx = (e.clientX - cx) / cx;
+    const ny = (e.clientY - cy) / cy;
+
+    // Very gentle — max ±4deg Y, ±2deg X around the resting 4deg tilt
+    targetTiltY = nx * 4;
+    targetTiltX = 4 + (-ny * 2);
   });
-  
-  // Smooth animation loop for parallax
-  function animateParallax() {
-    if(hasStarted) {
-      // Lerp (Linear Interpolation) for smooth movement
-      currentX += (targetX - currentX) * 0.05;
-      currentY += (targetY - currentY) * 0.05;
-      
-      if(roomScene) {
-        roomScene.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg) scale(0.9)`;
+
+  function rafParallax() {
+    if (parallaxActive) {
+      currentTiltX += (targetTiltX - currentTiltX) * 0.06;
+      currentTiltY += (targetTiltY - currentTiltY) * 0.06;
+
+      if (stage) {
+        stage.style.transform =
+          `perspective(1800px) rotateX(${currentTiltX}deg) rotateY(${currentTiltY}deg)`;
       }
     }
-    requestAnimationFrame(animateParallax);
+    requestAnimationFrame(rafParallax);
   }
-  
-  // Start the animation loop
-  animateParallax();
-  
-  // 3. Intro Animation when loader finishes
+  rafParallax();
+
+  // 3. Intro Animation — fade-in + settle from below
   function introAnimation() {
-    if(!roomScene) return;
-    
-    // Set transition for smooth zoom out
-    roomScene.style.transition = 'transform 2.5s cubic-bezier(0.15, 0.85, 0.35, 1)';
-    
-    // Trigger the animation to the target base state
+    if (!stage) return;
+
+    // Start from slightly below & smaller
+    stage.style.transition = 'none';
+    stage.style.transform   = 'perspective(1800px) rotateX(8deg) rotateY(0deg) translateY(30px) scale(0.94)';
+    stage.style.opacity     = '0';
+
     requestAnimationFrame(() => {
-      roomScene.style.transform = `rotateX(5deg) rotateY(0deg) scale(0.9)`;
-      
-      // Enable mouse tracking when transition finishes
-      setTimeout(() => {
-        roomScene.style.transition = 'transform 0.1s ease-out';
-        hasStarted = true;
-        currentX = 5;
-        currentY = 0;
-      }, 2500);
+      requestAnimationFrame(() => {
+        stage.style.transition = 'transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s ease';
+        stage.style.transform   = 'perspective(1800px) rotateX(4deg) rotateY(0deg) translateY(0px) scale(1)';
+        stage.style.opacity     = '1';
+
+        setTimeout(() => {
+          stage.style.transition = '';
+          parallaxActive = true;
+          currentTiltX = 4;
+          currentTiltY = 0;
+        }, 1800);
+      });
     });
   }
 });
+

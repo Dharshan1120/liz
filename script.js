@@ -1,4 +1,4 @@
-﻿// ==========================================
+// ==========================================
 //   LIZ STUDIO - PORTFOLIO JAVASCRIPT
 // ==========================================
 
@@ -133,4 +133,4 @@ document.querySelectorAll(".profile-card, .service-card").forEach(card => {
   });
 });
 
-console.log("LIZ Studio - Built with passion by Dharshan & Baumendhra");
+console.log("LIZ Technologies - Built with passion by Baumendhra & Dharshan");

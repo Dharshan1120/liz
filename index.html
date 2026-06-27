@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LIZ Studio - Dharshan & Baumendhra | Web Development Duo</title>
-  <meta name="description" content="LIZ Studio is a freelance web development duo. Dharshan and Baumendhra build stunning websites, full-stack apps, and digital experiences." />
+  <title>LIZ Technologies - Baumendhra &amp; Dharshan | Engineering Solutions. Not Templates.</title>
+  <meta name="description" content="We build custom software solutions that help businesses automate operations, streamline workflows, and scale with confidence." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,67 +19,10 @@
     <div class="loader-glow loader-glow-1"></div>
     <div class="loader-glow loader-glow-2"></div>
 
-    <!-- Team Avatars (CSS Art) -->
+    <!-- Team Avatars -->
     <div class="loader-avatars-wrap">
       <div class="loader-avatars-glow"></div>
-      
-      <!-- Dharshan (Frontend Developer) -->
-      <div class="dev-avatar dharshan">
-        <div class="dev-head">
-          <div class="dev-hair-dharshan"></div>
-          <div class="dev-ear left"></div>
-          <div class="dev-ear right"></div>
-          <div class="dev-face">
-            <div class="dev-glasses">
-              <div class="lens"><span class="lens-code-left">&lt;</span></div>
-              <div class="lens"><span class="lens-code-right">/&gt;</span></div>
-            </div>
-            <div class="dev-nose"></div>
-            <div class="dev-smile"></div>
-          </div>
-        </div>
-        <div class="dev-body">
-          <div class="dev-shirt design-shirt">
-            <span>UI</span>
-          </div>
-          <div class="dev-desk-hands">
-            <div class="hand left typing-left"></div>
-            <div class="hand right typing-right"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Baumendhra (Backend Developer) -->
-      <div class="dev-avatar baumendhra">
-        <div class="dev-head">
-          <div class="dev-hair-baum"></div>
-          <div class="dev-ear left"></div>
-          <div class="dev-ear right"></div>
-          <div class="dev-face">
-            <div class="dev-glasses">
-              <div class="lens"><span class="lens-code-left">{</span></div>
-              <div class="lens"><span class="lens-code-right">}</span></div>
-            </div>
-            <div class="dev-nose"></div>
-            <div class="dev-smile"></div>
-          </div>
-        </div>
-        <div class="dev-body">
-          <div class="dev-shirt code-shirt">
-            <span>API</span>
-          </div>
-          <div class="dev-desk-hands">
-            <div class="mug-steaming">
-              <div class="steam s1"></div>
-              <div class="steam s2"></div>
-              <div class="steam s3"></div>
-            </div>
-            <div class="hand left holding-mug"></div>
-            <div class="hand right typing-right"></div>
-          </div>
-        </div>
-      </div>
-
+      <img src="IMG-20260624-WA0003(1).jpg" alt="Dharshan & Baumendhra" class="loader-team-photo" />
     </div>
 
     <!-- Percentage Counter -->
@@ -94,7 +37,7 @@
     </div>
 
     <!-- Loading text -->
-    <div class="loader-label" id="loaderLabel">Initializing LIZ Studio...</div>
+    <div class="loader-label" id="loaderLabel">Initializing LIZ Technologies...</div>
   </div>
 
   <!-- ========== NAVBAR ========== -->
@@ -122,186 +65,159 @@
   </div>
   <div class="mobile-menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
-  <!-- ========== HERO SECTION - 3D ROOM ========== -->
+  <!-- ========== HERO SECTION - 3D SHOWCASE ========== -->
   <section class="hero" id="hero">
+    <!-- 3D SHOWCASE SCENE -->
+    <div class="showcase-scene" id="roomScene">
+      <!-- Ambient background glows -->
+      <div class="scene-glow glow-purple"></div>
+      <div class="scene-glow glow-blue"></div>
+      <div class="scene-glow glow-pink"></div>
 
-    <!-- 3D ROOM SCENE -->
-    <div class="room-scene" id="roomScene">
-      <div class="room-perspective">
-        <!-- Scrolling marquee text inside the 3D room (behind desk/monitors) -->
-        <div class="hero-marquee-wrapper">
-          <div class="hero-marquee">
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-            <span>LIZ&nbsp;&#10022;&nbsp;</span>
-          </div>
+      <!-- Main device stage -->
+      <div class="device-stage" id="deviceStage">
+
+        <!-- Desk surface (very slim, no floor plane) -->
+        <div class="slim-desk">
+          <div class="desk-top"></div>
+          <div class="desk-left-leg"></div>
+          <div class="desk-right-leg"></div>
+          <div class="desk-reflection"></div>
         </div>
 
-        <!-- Room Walls -->
-        <div class="room-floor"></div>
-        <div class="room-back-wall">
-          <div class="wall-panel left-panel"></div>
-          <div class="wall-panel right-panel"></div>
-          <!-- Acoustic foam pattern -->
-          <div class="foam-grid">
-            <div class="foam-row">
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-            </div>
-            <div class="foam-row">
-              <div class="foam-tile b"></div><div class="foam-tile b"></div><div class="foam-tile b"></div>
-              <div class="foam-tile b"></div><div class="foam-tile b"></div><div class="foam-tile b"></div>
-              <div class="foam-tile b"></div><div class="foam-tile b"></div><div class="foam-tile b"></div>
-              <div class="foam-tile b"></div><div class="foam-tile b"></div><div class="foam-tile b"></div>
-            </div>
-            <div class="foam-row">
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-              <div class="foam-tile"></div><div class="foam-tile"></div><div class="foam-tile"></div>
-            </div>
-          </div>
-        </div>
-        <div class="room-left-wall"></div>
-        <div class="room-right-wall"></div>
-
-        <!-- Ceiling with light strip -->
-        <div class="room-ceiling">
-          <div class="ceiling-light-strip"></div>
-        </div>
-
-        <!-- LEFT SPEAKER -->
-        <div class="speaker left-speaker">
-          <div class="speaker-body">
-            <div class="speaker-tweeter"></div>
-            <div class="speaker-woofer">
-              <div class="speaker-cone"></div>
-              <div class="speaker-cone-ring"></div>
-            </div>
-            <div class="speaker-port"></div>
-            <div class="speaker-led"></div>
-          </div>
-          <div class="speaker-stand"></div>
-          <div class="speaker-base"></div>
-          <div class="speaker-glow-l"></div>
-        </div>
-
-        <!-- RIGHT SPEAKER -->
-        <div class="speaker right-speaker">
-          <div class="speaker-body">
-            <div class="speaker-tweeter"></div>
-            <div class="speaker-woofer">
-              <div class="speaker-cone"></div>
-              <div class="speaker-cone-ring"></div>
-            </div>
-            <div class="speaker-port"></div>
-            <div class="speaker-led"></div>
-          </div>
-          <div class="speaker-stand"></div>
-          <div class="speaker-base"></div>
-          <div class="speaker-glow-r"></div>
-        </div>
-
-        <!-- DESK -->
-        <div class="desk">
-          <div class="desk-surface"></div>
-          <div class="desk-front-edge"></div>
-          <div class="desk-leg left-leg"></div>
-          <div class="desk-leg right-leg"></div>
-
-          <!-- VERTICAL MONITOR (LEFT) -->
-          <div class="monitor vertical-monitor">
-            <div class="monitor-stand-base"></div>
-            <div class="monitor-stand-neck"></div>
-            <div class="monitor-frame">
-              <div class="monitor-screen">
-                <div class="screen-content">
-                  <div class="vertical-layout">
-                    <!-- Music playback display -->
-                    <div class="music-card">
-                      <div class="music-bars">
-                        <span></span><span></span><span></span><span></span>
+        <!-- LAPTOP (centerpiece) -->
+        <div class="device laptop-device" id="laptopDevice">
+          <div class="laptop-body">
+            <!-- Screen lid -->
+            <div class="laptop-lid">
+              <div class="laptop-display">
+                <!-- Bezel -->
+                <div class="display-inner">
+                  <!-- Screen UI: LIZ Dashboard -->
+                  <div class="liz-ui">
+                    <div class="ui-topbar">
+                      <div class="ui-dots">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
                       </div>
-                      <div class="music-info">
-                        <div class="music-title">LIZ Studio Mix</div>
-                        <div class="music-artist">Baumendhra &amp; Dharshan</div>
+                      <div class="ui-address">liz.technologies / dashboard</div>
+                    </div>
+                    <div class="ui-nav">
+                      <span class="ui-logo">LIZ</span>
+                      <div class="ui-nav-links">
+                        <span>Work</span><span>About</span><span>Contact</span>
                       </div>
                     </div>
-                    <div class="code-flow">
-                      <div class="c-ln">import { studio } from 'liz';</div>
-                      <div class="c-ln">studio.init();</div>
-                      <div class="c-ln">const config = {</div>
-                      <div class="c-ln indent">speed: 'blazing',</div>
-                      <div class="c-ln indent">design: 'premium'</div>
-                      <div class="c-ln">};</div>
+                    <div class="ui-hero-block">
+                      <div class="ui-hero-tag">Premium Software</div>
+                      <div class="ui-hero-title">Engineering</div>
+                      <div class="ui-hero-title accent">Solutions.</div>
+                      <div class="ui-cta-row">
+                        <div class="ui-cta-btn"></div>
+                        <div class="ui-cta-ghost"></div>
+                      </div>
+                    </div>
+                    <div class="ui-stats-row">
+                      <div class="ui-stat"><span class="stat-n">10+</span><span class="stat-l">Projects</span></div>
+                      <div class="ui-stat"><span class="stat-n">100%</span><span class="stat-l">Satisfaction</span></div>
+                      <div class="ui-stat"><span class="stat-n">3+</span><span class="stat-l">Years</span></div>
                     </div>
                   </div>
+                  <div class="screen-scan-line"></div>
+                  <div class="screen-glow-overlay"></div>
                 </div>
+              </div>
+              <div class="lid-back">
+                <div class="lid-logo">LIZ</div>
+              </div>
+            </div>
+            <!-- Base/keyboard section -->
+            <div class="laptop-base-body">
+              <div class="keyboard-area">
+                <div class="keys-row"></div>
+                <div class="keys-row"></div>
+                <div class="keys-row"></div>
+                <div class="trackpad-area"></div>
               </div>
             </div>
           </div>
-
-          <!-- HORIZONTAL MONITOR (RIGHT) -->
-          <div class="monitor horizontal-monitor">
-            <div class="monitor-stand-base"></div>
-            <div class="monitor-stand-neck"></div>
-            <div class="monitor-frame">
-              <div class="monitor-screen">
-                <!-- Screen content -->
-                <div class="screen-content">
-                  <div class="screen-topbar">
-                    <div class="screen-dot r"></div>
-                    <div class="screen-dot y"></div>
-                    <div class="screen-dot g"></div>
-                    <div class="screen-address">ACCESS: liz.studio</div>
-                  </div>
-                  <div class="screen-code">
-                    <div class="code-line"><span class="kw">const</span> <span class="fn">liz</span> = <span class="st">'studio'</span>;</div>
-                    <div class="code-line"><span class="kw">function</span> <span class="fn">build</span>() {</div>
-                    <div class="code-line indent"><span class="cm">// magic here</span></div>
-                    <div class="code-line indent"><span class="kw">return</span> <span class="st">'&#9829; web'</span>;</div>
-                    <div class="code-line">}</div>
-                    <div class="code-line cursor-blink">&#9646;</div>
-                  </div>
-                  <div class="screen-glow-center"></div>
-                </div>
-              </div>
-              <div class="monitor-bezel-bottom">
-                <div class="monitor-led-dot"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Desk Items -->
-          <div class="desk-item keyboard">
-            <div class="key-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key w"></div><div class="key"></div><div class="key"></div></div>
-            <div class="key-row"><div class="key w"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key w"></div></div>
-            <div class="key-row"><div class="key space"></div></div>
-          </div>
-
-          <div class="desk-item sticky-note">
-            <div class="sticky-text">Build.<br/>Ship.<br/>Repeat.</div>
-          </div>
-
-          <!-- Ambient light source on desk -->
-          <div class="desk-lamp-glow"></div>
+          <div class="laptop-shadow"></div>
         </div>
 
-        <!-- Floor reflections -->
-        <div class="floor-reflect left-reflect"></div>
-        <div class="floor-reflect right-reflect"></div>
+        <!-- SMARTPHONE (left) -->
+        <div class="device phone-device" id="phoneDevice">
+          <div class="phone-wrap">
+            <div class="phone-notch"></div>
+            <div class="phone-screen-wrap">
+              <!-- Mobile UI -->
+              <div class="mobile-ui">
+                <div class="mob-status">
+                  <span class="mob-time">09:41</span>
+                  <span class="mob-signal">●●●</span>
+                </div>
+                <div class="mob-header">LIZ</div>
+                <div class="mob-tagline">Engineering Solutions.</div>
+                <div class="mob-card"></div>
+                <div class="mob-card short"></div>
+                <div class="mob-nav-bar">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="screen-glow-overlay"></div>
+            </div>
+            <div class="phone-home-bar"></div>
+          </div>
+          <div class="phone-shadow"></div>
+        </div>
 
-        <!-- Ambient lights -->
-        <div class="ambient-light blue-light"></div>
-        <div class="ambient-light purple-light"></div>
-        <div class="ambient-light pink-light"></div>
-      </div>
-    </div>
+        <!-- TABLET (right) -->
+        <div class="device tablet-device" id="tabletDevice">
+          <div class="tablet-wrap">
+            <div class="tablet-camera"></div>
+            <div class="tablet-screen-wrap">
+              <!-- Analytics UI -->
+              <div class="analytics-ui">
+                <div class="an-header">
+                  <span class="an-title">LIZ Analytics</span>
+                  <span class="an-badge">LIVE</span>
+                </div>
+                <div class="an-chart-area">
+                  <div class="an-bar" style="--h:55%"></div>
+                  <div class="an-bar" style="--h:80%"></div>
+                  <div class="an-bar" style="--h:45%"></div>
+                  <div class="an-bar" style="--h:90%"></div>
+                  <div class="an-bar" style="--h:65%"></div>
+                </div>
+                <div class="an-metrics">
+                  <div class="an-metric"><div class="an-metric-val">92%</div><div class="an-metric-lbl">Uptime</div></div>
+                  <div class="an-metric"><div class="an-metric-val">10+</div><div class="an-metric-lbl">Projects</div></div>
+                </div>
+              </div>
+              <div class="screen-glow-overlay"></div>
+            </div>
+          </div>
+          <div class="tablet-shadow"></div>
+        </div>
+
+        <!-- HEADPHONES (natural placement beside laptop) -->
+        <div class="device headphones-device" id="headphonesDevice">
+          <div class="hp-wrap">
+            <div class="hp-band"></div>
+            <div class="hp-left-arm"></div>
+            <div class="hp-right-arm"></div>
+            <div class="hp-left-cup">
+              <div class="hp-cup-inner"></div>
+            </div>
+            <div class="hp-right-cup">
+              <div class="hp-cup-inner"></div>
+            </div>
+          </div>
+          <div class="hp-shadow"></div>
+        </div>
+
+      </div><!-- end device-stage -->
+    </div><!-- end showcase-scene -->
 
     <!-- Scroll indicator -->
     <div class="hero-scroll" style="z-index: 10;"><span>Scroll</span><div class="scroll-arrow">&darr;</div></div>
@@ -334,7 +250,7 @@
     <div class="section-container">
       <div class="section-label">WHO WE ARE</div>
       <h2 class="section-heading">ABOUT US</h2>
-      <p class="section-subheading">Full-Stack Web Development Duo</p>
+      <p class="section-subheading">We build custom software solutions that help businesses automate operations, streamline workflows, and scale with confidence.</p>
       <div class="about-layout">
         <!-- Left Side: Single Team Photo -->
         <div class="about-image-wrap card-reveal">
@@ -345,36 +261,36 @@
         <!-- Right Side: Info & Profiles -->
         <div class="about-content card-reveal">
           <div class="about-intro">
-            <h3>Duo Power, Unified Vision</h3>
-            <p>We are a synergy of design and engineering. Together, we build end-to-end digital solutions, combining pixel-perfect frontend experiences with scalable, secure backend systems.</p>
+            <h3>Engineering Solutions. Not Templates.</h3>
+            <p>LIZ Technologies is a software development company founded by Baumendhra and Dharshan. We specialize in building custom software that solves real business problems. Our focus is on creating scalable, user-friendly, and reliable business systems that improve efficiency and support long-term growth.</p>
           </div>
           
           <div class="about-profiles">
             <div class="about-profile-item">
               <div class="about-profile-header">
-                <span class="about-profile-icon">&#9996;</span>
+                <span class="about-profile-icon">&#9881;</span>
                 <div>
-                  <h4>Dharshan</h4>
-                  <p class="about-profile-role">Frontend Developer &amp; UI Designer</p>
+                  <h4>Baumendhra</h4>
+                  <p class="about-profile-role">Lead Software Engineer</p>
                 </div>
               </div>
-              <p class="about-profile-bio">Crafting pixel-perfect interfaces with React and Next.js. I transform complex ideas into elegant, responsive web experiences that users love.</p>
+              <p class="about-profile-bio">Passionate about software architecture, backend systems, databases, and building reliable applications that solve real-world business challenges.</p>
               <div class="about-profile-tags">
-                <span>React</span><span>Next.js</span><span>Figma</span><span>TypeScript</span>
+                <span>TypeScript</span><span>Supabase</span><span>Git</span><span>GitHub</span>
               </div>
             </div>
             
             <div class="about-profile-item">
               <div class="about-profile-header">
-                <span class="about-profile-icon">&#9881;</span>
+                <span class="about-profile-icon">&#9996;</span>
                 <div>
-                  <h4>Baumendhra</h4>
-                  <p class="about-profile-role">Backend Developer &amp; Architect</p>
+                  <h4>Dharshan</h4>
+                  <p class="about-profile-role">Product Strategist &amp; Full Stack Developer</p>
                 </div>
               </div>
-              <p class="about-profile-bio">Building robust backend systems, APIs, and databases. I ensure your product is fast, secure, and scales effortlessly as you grow.</p>
+              <p class="about-profile-bio">Focused on understanding client requirements, designing intuitive user experiences, and transforming business ideas into practical software solutions.</p>
               <div class="about-profile-tags">
-                <span>Node.js</span><span>PostgreSQL</span><span>MongoDB</span><span>AWS</span>
+                <span>React</span><span>Tailwind CSS</span><span>Vercel</span><span>Figma</span>
               </div>
             </div>
           </div>
@@ -383,8 +299,8 @@
             <div class="about-fact-item">
               <span class="fact-emoji">&#127758;</span>
               <div>
-                <h5>Flexible Across All Time Zones</h5>
-                <p>We work with clients globally, adapting to your schedule and delivering on time.</p>
+                <h5>We don't just build websites.</h5>
+                <p>We engineer software that helps businesses work smarter, automate operations, and grow through technology.</p>
               </div>
             </div>
           </div>
@@ -402,38 +318,38 @@
       <div class="services-grid">
         <div class="service-card card-reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
-          <h3>Frontend Development</h3>
-          <p>Blazing-fast, responsive interfaces built with React, Next.js, and modern CSS. Every pixel purposeful.</p>
+          <h3>Custom Software Development</h3>
+          <p>Tailored software solutions designed to solve real business challenges, improve efficiency, and support long-term growth.</p>
           <ul class="service-list">
-            <li>React &amp; Next.js Apps</li><li>Responsive Design</li><li>Performance Optimization</li><li>Animation &amp; Micro-interactions</li>
+            <li>Custom Software Development</li><li>Web Application Development</li><li>Database Design &amp; Integration</li>
           </ul>
           <div class="service-arrow">&rarr;</div>
         </div>
         <div class="service-card service-card-highlight card-reveal">
           <div class="service-badge">Most Popular</div>
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-          <h3>Full-Stack Development</h3>
-          <p>Complete web applications from database to deployment. We own the entire product lifecycle.</p>
+          <h3>Business Automation Systems</h3>
+          <p>Complete custom business systems designed to simplify day-to-day operations, centralize control, and automate manual tasks.</p>
           <ul class="service-list">
-            <li>REST &amp; GraphQL APIs</li><li>Database Design</li><li>Authentication &amp; Security</li><li>Cloud Deployment &amp; DevOps</li>
+            <li>Business Automation Systems</li><li>Dashboard &amp; Analytics Solutions</li><li>Database Design &amp; Integration</li>
           </ul>
           <div class="service-arrow">&rarr;</div>
         </div>
         <div class="service-card card-reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>UI/UX Design</h3>
-          <p>Beautiful, intuitive interfaces designed in Figma. From wireframes to design systems that delight users.</p>
+          <h3>Web Application Development</h3>
+          <p>Scalable, responsive, and user-friendly web applications that help your business scale with confidence.</p>
           <ul class="service-list">
-            <li>Wireframing &amp; Prototyping</li><li>Design Systems</li><li>User Research</li><li>Brand Identity</li>
+            <li>Web Application Development</li><li>Dashboard &amp; Analytics Solutions</li><li>Database Design &amp; Integration</li>
           </ul>
           <div class="service-arrow">&rarr;</div>
         </div>
         <div class="service-card card-reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg></div>
-          <h3>E-Commerce Development</h3>
-          <p>High-converting online stores with seamless checkout flows, payment integration, and inventory management.</p>
+          <h3>Maintenance &amp; Support</h3>
+          <p>Reliable post-launch technical support, regular performance optimizations, and continuous system improvements.</p>
           <ul class="service-list">
-            <li>Shopify &amp; WooCommerce</li><li>Payment Gateway Integration</li><li>Custom E-Commerce Solutions</li><li>Performance &amp; SEO</li>
+            <li>Maintenance &amp; Technical Support</li><li>Database Design &amp; Integration</li><li>Continuous Improvements</li>
           </ul>
           <div class="service-arrow">&rarr;</div>
         </div>
@@ -451,41 +367,33 @@
         <div class="skills-marquee-row">
           <div class="skills-track">
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/>React</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"/>Next.js</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"/>TypeScript</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>JavaScript</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/>Tailwind CSS</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"/>Supabase</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>JavaScript</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>Figma</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>HTML5</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>CSS3</div>
+            <!-- Repeat -->
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/>React</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"/>Next.js</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"/>TypeScript</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>JavaScript</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/>Tailwind CSS</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"/>Supabase</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>JavaScript</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>Figma</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>HTML5</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>CSS3</div>
           </div>
         </div>
         <div class="skills-marquee-row reverse">
           <div class="skills-track">
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"/>Node.js</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express"/>Express.js</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"/>MongoDB</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>HTML5</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>CSS3</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"/>Firebase</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>MySQL</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"/>Node.js</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express"/>Express.js</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"/>MongoDB</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>GitHub</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-line.svg" alt="Vercel"/>Vercel</div>
+            <!-- Repeat -->
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/>HTML5</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/>CSS3</div>
             <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"/>Firebase</div>
-            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>MySQL</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>GitHub</div>
+            <div class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-line.svg" alt="Vercel"/>Vercel</div>
           </div>
         </div>
       </div>
@@ -501,6 +409,28 @@
       <div class="projects-grid">
         <div class="project-card card-reveal">
           <div class="project-preview">
+            <div class="project-preview-inner pm-saas">
+              <div class="pm-bar"><span></span><span></span><span></span></div>
+              <div class="pm-page-content pm-dashboard">
+                <div class="pm-sidebar-sim"><div></div><div class="active"></div><div></div><div></div></div>
+                <div class="pm-dash-main"><div class="pm-stats-row"><div></div><div></div><div></div></div><div class="pm-chart-sim"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">GymFlow Lite</h3>
+            <p class="project-desc">A complete gym management solution designed to simplify member management, attendance tracking, payment monitoring, and day-to-day gym operations.</p>
+            <div class="project-tech-row">
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
+            </div>
+            <a href="#contact" class="project-preview-link">Preview &nearr;</a>
+          </div>
+        </div>
+        <div class="project-card card-reveal">
+          <div class="project-preview">
             <div class="project-preview-inner pm-ecommerce">
               <div class="pm-bar"><span></span><span></span><span></span></div>
               <div class="pm-page-content">
@@ -511,78 +441,15 @@
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">E-Commerce Platform</h3>
-            <p class="project-desc">A fully-featured online store with cart, payments, and admin dashboard. Built for performance and scale.</p>
+            <h3 class="project-title">Aesthetic Fitness Gym Management System</h3>
+            <p class="project-desc">A modern multi-branch gym management platform built to manage independent branches while providing centralized business control and analytics.</p>
             <div class="project-tech-row">
               <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" /></span>
+              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
             </div>
-            <a href="#contact" class="project-preview-link">Preview &#8599;</a>
-          </div>
-        </div>
-        <div class="project-card card-reveal">
-          <div class="project-preview">
-            <div class="project-preview-inner pm-saas">
-              <div class="pm-bar"><span></span><span></span><span></span></div>
-              <div class="pm-page-content pm-dashboard">
-                <div class="pm-sidebar-sim"><div></div><div class="active"></div><div></div><div></div></div>
-                <div class="pm-dash-main"><div class="pm-stats-row"><div></div><div></div><div></div></div><div class="pm-chart-sim"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">SaaS Dashboard</h3>
-            <p class="project-desc">Analytics and management dashboard with real-time data visualization and team collaboration features.</p>
-            <div class="project-tech-row">
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TS" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PG" /></span>
-            </div>
-            <a href="#contact" class="project-preview-link">Preview &#8599;</a>
-          </div>
-        </div>
-        <div class="project-card card-reveal">
-          <div class="project-preview">
-            <div class="project-preview-inner pm-portfolio">
-              <div class="pm-bar"><span></span><span></span><span></span></div>
-              <div class="pm-page-content pm-port">
-                <div class="pm-hero-big-sim"></div>
-                <div class="pm-grid-sim"><div></div><div></div></div>
-                <div class="pm-thin-bar"></div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Creative Portfolio</h3>
-            <p class="project-desc">A stunning portfolio website with scroll effects, animations, and a bespoke contact system.</p>
-            <div class="project-tech-row">
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" /></span>
-            </div>
-            <a href="#contact" class="project-preview-link">Preview &#8599;</a>
-          </div>
-        </div>
-        <div class="project-card card-reveal">
-          <div class="project-preview">
-            <div class="project-preview-inner pm-restaurant">
-              <div class="pm-bar"><span></span><span></span><span></span></div>
-              <div class="pm-page-content pm-rest">
-                <div class="pm-banner-sim"></div>
-                <div class="pm-menu-grid"><div></div><div></div><div></div><div></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Restaurant Web App</h3>
-            <p class="project-desc">Online ordering and reservation system for a restaurant chain with real-time kitchen notifications.</p>
-            <div class="project-tech-row">
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" /></span>
-            </div>
-            <a href="#contact" class="project-preview-link">Preview &#8599;</a>
+            <a href="#contact" class="project-preview-link">Preview &nearr;</a>
           </div>
         </div>
       </div>
@@ -592,14 +459,14 @@
   <!-- ========== PROCESS SECTION ========== -->
   <section class="process" id="process">
     <div class="section-container">
-      <div class="section-label">HOW WE WORK</div>
-      <h2 class="section-heading">OUR PROCESS</h2>
-      <p class="section-subheading">From idea to launch - clean, collaborative, consistent</p>
+      <div class="section-label">WHY CHOOSE US</div>
+      <h2 class="section-heading">OUR VALUES</h2>
+      <p class="section-subheading">Why businesses trust LIZ Technologies to engineer their custom software systems.</p>
       <div class="process-steps">
-        <div class="process-step card-reveal"><div class="step-number">01</div><div class="step-content"><h4>Discover</h4><p>We deep-dive into your goals, users, and constraints to define a clear product vision.</p></div><div class="step-connector"></div></div>
-        <div class="process-step card-reveal"><div class="step-number">02</div><div class="step-content"><h4>Design</h4><p>Wireframes, prototypes, and high-fidelity designs crafted in Figma before a single line of code.</p></div><div class="step-connector"></div></div>
-        <div class="process-step card-reveal"><div class="step-number">03</div><div class="step-content"><h4>Build</h4><p>Clean, scalable code written with modern frameworks. Regular updates and demos throughout.</p></div><div class="step-connector"></div></div>
-        <div class="process-step card-reveal"><div class="step-number">04</div><div class="step-content"><h4>Launch &amp; Support</h4><p>Deployment, testing, and post-launch support. We are here even after go-live.</p></div></div>
+        <div class="process-step card-reveal"><div class="step-number">01</div><div class="step-content"><h4>Business-Focused</h4><p>We design custom software solutions built to automate operations, streamline workflows, and scale with confidence.</p></div><div class="step-connector"></div></div>
+        <div class="process-step card-reveal"><div class="step-number">02</div><div class="step-content"><h4>Modern Tech Stack</h4><p>We use modern, reliable technologies like React, TypeScript, Tailwind CSS, and Supabase to build scalable systems.</p></div><div class="step-connector"></div></div>
+        <div class="process-step card-reveal"><div class="step-number">03</div><div class="step-content"><h4>Scalable &amp; Clean</h4><p>Our systems are engineered with a scalable architecture and a clean user experience to support long-term growth.</p></div><div class="step-connector"></div></div>
+        <div class="process-step card-reveal"><div class="step-number">04</div><div class="step-content"><h4>Reliable Support</h4><p>We provide reliable support and continuous improvements to ensure your custom systems remain up-to-date and robust.</p></div></div>
       </div>
     </div>
   </section>
@@ -611,8 +478,12 @@
       <div class="contact-left">
         <div class="section-label">GET IN TOUCH</div>
         <h2 class="section-heading contact-heading">LET'S<br/>TALK &nearr;</h2>
-        <p class="contact-desc">Have a project in mind? Tell us about it. We are always excited to take on new challenges and build something remarkable together.</p>
+        <p class="contact-desc">Have a business idea or need custom software?<br/>Let's build something that makes a real impact.</p>
         <div class="contact-links">
+          <a href="tel:+919487902905" class="contact-social" id="phone-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 9487902905
+          </a>
           <a href="https://github.com" target="_blank" class="contact-social" id="github-link">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
@@ -661,9 +532,9 @@
       <div class="footer-logo">
         <span class="logo-text">LIZ</span>
         <span class="logo-dot">&#9679;</span>
-        <span class="footer-tagline">Studio</span>
+        <span class="footer-tagline">Technologies</span>
       </div>
-      <p class="footer-copy">2026 &copy; LIZ Studio - Dharshan &amp; Baumendhra. All rights reserved.</p>
+      <p class="footer-copy">Engineering Solutions. Not Templates. Built with passion by Baumendhra &amp; Dharshan.</p>
       <div class="footer-links">
         <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
       </div>
