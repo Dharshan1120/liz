@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loaderPercent.textContent = percent;
       loaderBar.style.width = percent + '%';
     }
-  }, 30);
+  }, 75);
 
   // 2. Subtle Mouse Parallax on Device Stage
   // We tilt the entire device-stage slightly — safe because perspective is
