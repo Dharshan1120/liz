@@ -326,33 +326,34 @@ function initThreeScene() {
   const lidGroup = new THREE.Group();
   lidGroup.position.set(0, 0.08, -0.95); // hinge position
 
-  const lLid = mesh(rBox(2.8, 0.06, 1.9), matAluminium);
-  lLid.position.set(0, 0.95, 0.95); // offset within lid group
+  // lLid is vertical (width=2.8, height=1.9, thickness=0.06)
+  const lLid = mesh(rBox(2.8, 1.9, 0.06), matAluminium);
+  lLid.position.set(0, 0.95, 0); // center of vertical sheet
   lidGroup.add(lLid);
 
-  // Screen bezel
-  const lBezel = mesh(new THREE.BoxGeometry(2.7, 1.78, 0.02), new THREE.MeshStandardMaterial({ color:0x080808, roughness:0.9 }));
-  lBezel.position.set(0, 0.99, 0.95);
+  // Screen bezel (sits slightly forward on the Z face)
+  const lBezel = mesh(new THREE.BoxGeometry(2.7, 1.78, 0.01), new THREE.MeshStandardMaterial({ color:0x080808, roughness:0.9 }));
+  lBezel.position.set(0, 0.95, 0.031);
   lidGroup.add(lBezel);
 
-  // Actual screen
+  // Actual screen (sits slightly forward on the bezel)
   const lScreen = mesh(new THREE.PlaneGeometry(2.5, 1.62), matLaptopScreen);
-  lScreen.position.set(0, 0.99, 0.965);
+  lScreen.position.set(0, 0.95, 0.037);
   lScreen.material.emissiveIntensity = 0.8;
   lidGroup.add(lScreen);
 
   // Camera dot
-  const lCam = mesh(new THREE.SphereGeometry(0.025, 8, 8), new THREE.MeshStandardMaterial({ color:0x111111 }));
-  lCam.position.set(0, 1.9, 0.97);
+  const lCam = mesh(new THREE.SphereGeometry(0.022, 8, 8), new THREE.MeshStandardMaterial({ color:0x111111 }));
+  lCam.position.set(0, 1.8, 0.038);
   lidGroup.add(lCam);
 
   // Tilt lid open ~110°
   lidGroup.rotation.x = -Math.PI * (110/180);
   laptopGroup.add(lidGroup);
 
-  // Apple-like logo on lid back
-  const lLogo = mesh(new THREE.PlaneGeometry(0.3, 0.3), new THREE.MeshStandardMaterial({ color:0x2a2a2a, roughness:0.1, metalness:0.9, side: THREE.BackSide }));
-  lLogo.position.set(0, 0.99, 0.94);
+  // Apple-like logo on lid back (sits slightly backward on the Z face)
+  const lLogo = mesh(new THREE.PlaneGeometry(0.3, 0.3), new THREE.MeshStandardMaterial({ color:0x3a3a3a, roughness:0.1, metalness:0.9, side: THREE.BackSide }));
+  lLogo.position.set(0, 0.95, -0.031);
   lLogo.rotation.x = Math.PI;
   lidGroup.add(lLogo);
 
@@ -434,38 +435,34 @@ function initThreeScene() {
   ════════════════════════════════════════════════════════════════════════ */
   const hpGroup = new THREE.Group();
 
-  // Headband arc (using a torus)
-  const bandGeo = new THREE.TorusGeometry(0.52, 0.04, 12, 48, Math.PI);
+  // Headband arc (upright torus in XY plane)
+  const bandGeo = new THREE.TorusGeometry(0.4, 0.03, 12, 48, Math.PI);
   const band = mesh(bandGeo, matHPBand);
-  band.rotation.x = Math.PI/2;
-  band.rotation.z = Math.PI;
-  band.position.set(0, 0.52, 0);
+  band.position.set(0, 0, 0);
   hpGroup.add(band);
 
-  // Arms
+  // Arms & Ear Cups
   [-1,1].forEach(side => {
-    const arm = mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.48, 12), matHPBand);
-    arm.position.set(side * 0.5, 0.18, 0);
-    arm.rotation.z = side * 0.15;
+    // Metal extension arms extending downwards
+    const arm = mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.22, 12), matHPBand);
+    arm.position.set(side * 0.4, -0.1, 0);
     hpGroup.add(arm);
 
-    // Ear cup
-    const cup = mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.14, 24), matHPCup);
-    cup.rotation.x = Math.PI/2;
-    cup.rotation.z = side * 0.15;
-    cup.position.set(side * 0.52, -0.06, 0);
+    // Ear cup cylinders rotated sideways to face ears (pointing along X axis)
+    const cup = mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.1, 24), matHPCup);
+    cup.rotation.z = Math.PI/2;
+    cup.position.set(side * 0.4, -0.22, 0);
     hpGroup.add(cup);
 
     // Cup cushion
-    const cushion = mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.08, 24), new THREE.MeshStandardMaterial({ color:0x0a0a0a, roughness:0.95 }));
-    cushion.rotation.x = Math.PI/2;
-    cushion.rotation.z = side * 0.15;
-    cushion.position.set(side * 0.59, -0.06, 0);
+    const cushion = mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.06, 24), new THREE.MeshStandardMaterial({ color:0x0a0a0a, roughness:0.95 }));
+    cushion.rotation.z = Math.PI/2;
+    cushion.position.set(side * (0.4 - side * 0.05), -0.22, 0);
     hpGroup.add(cushion);
 
-    // LED dot
-    const led = mesh(new THREE.SphereGeometry(0.018, 8, 8), new THREE.MeshStandardMaterial({ color:0x888888, emissive:0x8888ff, emissiveIntensity:0.5 }));
-    led.position.set(side * 0.66, -0.06, 0);
+    // LED dot indicator
+    const led = mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshStandardMaterial({ color:0x888888, emissive:0x8888ff, emissiveIntensity:0.5 }));
+    led.position.set(side * 0.45, -0.22, 0);
     hpGroup.add(led);
   });
 
