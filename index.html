@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="3d-loader.css" />
+  <!-- Three.js for true WebGL 3D hero -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 <body class="loading">
 
@@ -64,165 +66,17 @@
   </div>
   <div class="mobile-menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
-  <!-- ========== HERO SECTION - 3D SHOWCASE ========== -->
+  <!-- ========== HERO SECTION - TRUE 3D WebGL ========== -->
   <section class="hero" id="hero">
-    <!-- 3D SHOWCASE SCENE -->
-    <div class="showcase-scene" id="roomScene">
-      <!-- Ambient background glows -->
-      <div class="scene-glow glow-purple"></div>
-      <div class="scene-glow glow-blue"></div>
-      <div class="scene-glow glow-pink"></div>
-
-      <!-- Main device stage -->
-      <div class="device-stage" id="deviceStage">
-
-        <!-- Desk surface (very slim, no floor plane) -->
-        <div class="slim-desk">
-          <div class="desk-top"></div>
-          <div class="desk-left-leg"></div>
-          <div class="desk-right-leg"></div>
-          <div class="desk-reflection"></div>
-        </div>
-
-        <!-- LAPTOP (centerpiece) -->
-        <div class="device laptop-device" id="laptopDevice">
-          <div class="laptop-body">
-            <!-- Screen lid -->
-            <div class="laptop-lid">
-              <div class="laptop-display">
-                <!-- Bezel -->
-                <div class="display-inner">
-                  <!-- Screen UI: LIZ Dashboard -->
-                  <div class="liz-ui">
-                    <div class="ui-topbar">
-                      <div class="ui-dots">
-                        <span class="dot dot-r"></span>
-                        <span class="dot dot-y"></span>
-                        <span class="dot dot-g"></span>
-                      </div>
-                      <div class="ui-address">liz.technologies / dashboard</div>
-                    </div>
-                    <div class="ui-nav">
-                      <img src="logo.jpg" alt="LIZ Logo" class="logo-img-ui" />
-                      <div class="ui-nav-links">
-                        <span>Work</span><span>About</span><span>Contact</span>
-                      </div>
-                    </div>
-                    <div class="ui-hero-block">
-                      <div class="ui-hero-tag">Premium Software</div>
-                      <div class="ui-hero-title">Engineering</div>
-                      <div class="ui-hero-title accent">Solutions.</div>
-                      <div class="ui-cta-row">
-                        <div class="ui-cta-btn"></div>
-                        <div class="ui-cta-ghost"></div>
-                      </div>
-                    </div>
-                    <div class="ui-stats-row">
-                      <div class="ui-stat"><span class="stat-n">10+</span><span class="stat-l">Projects</span></div>
-                      <div class="ui-stat"><span class="stat-n">100%</span><span class="stat-l">Satisfaction</span></div>
-                      <div class="ui-stat"><span class="stat-n">3+</span><span class="stat-l">Years</span></div>
-                    </div>
-                  </div>
-                  <div class="screen-scan-line"></div>
-                  <div class="screen-glow-overlay"></div>
-                </div>
-              </div>
-              <div class="lid-back">
-                <div class="lid-logo">LIZ</div>
-              </div>
-            </div>
-            <!-- Base/keyboard section -->
-            <div class="laptop-base-body">
-              <div class="keyboard-area">
-                <div class="keys-row"></div>
-                <div class="keys-row"></div>
-                <div class="keys-row"></div>
-                <div class="trackpad-area"></div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-shadow"></div>
-        </div>
-
-        <!-- SMARTPHONE (left) -->
-        <div class="device phone-device" id="phoneDevice">
-          <div class="phone-wrap">
-            <div class="phone-notch"></div>
-            <div class="phone-screen-wrap">
-              <!-- Mobile UI -->
-              <div class="mobile-ui">
-                <div class="mob-status">
-                  <span class="mob-time">09:41</span>
-                  <span class="mob-signal">●●●</span>
-                </div>
-                <img src="logo.jpg" alt="LIZ Logo" class="logo-img-ui mob-logo" />
-                <div class="mob-tagline">Engineering Solutions.</div>
-                <div class="mob-card"></div>
-                <div class="mob-card short"></div>
-                <div class="mob-nav-bar">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div class="screen-glow-overlay"></div>
-            </div>
-            <div class="phone-home-bar"></div>
-          </div>
-          <div class="phone-shadow"></div>
-        </div>
-
-        <!-- TABLET (right) -->
-        <div class="device tablet-device" id="tabletDevice">
-          <div class="tablet-wrap">
-            <div class="tablet-camera"></div>
-            <div class="tablet-screen-wrap">
-              <!-- Analytics UI -->
-              <div class="analytics-ui">
-                <div class="an-header">
-                  <img src="logo.jpg" alt="LIZ Logo" class="logo-img-ui tablet-logo" />
-                  <span class="an-badge">LIVE</span>
-                </div>
-                <div class="an-chart-area">
-                  <div class="an-bar" style="--h:55%"></div>
-                  <div class="an-bar" style="--h:80%"></div>
-                  <div class="an-bar" style="--h:45%"></div>
-                  <div class="an-bar" style="--h:90%"></div>
-                  <div class="an-bar" style="--h:65%"></div>
-                </div>
-                <div class="an-metrics">
-                  <div class="an-metric"><div class="an-metric-val">92%</div><div class="an-metric-lbl">Uptime</div></div>
-                  <div class="an-metric"><div class="an-metric-val">10+</div><div class="an-metric-lbl">Projects</div></div>
-                </div>
-              </div>
-              <div class="screen-glow-overlay"></div>
-            </div>
-          </div>
-          <div class="tablet-shadow"></div>
-        </div>
-
-        <!-- HEADPHONES (natural placement beside laptop) -->
-        <div class="device headphones-device" id="headphonesDevice">
-          <div class="hp-wrap">
-            <div class="hp-band"></div>
-            <div class="hp-left-arm"></div>
-            <div class="hp-right-arm"></div>
-            <div class="hp-left-cup">
-              <div class="hp-cup-inner"></div>
-            </div>
-            <div class="hp-right-cup">
-              <div class="hp-cup-inner"></div>
-            </div>
-          </div>
-          <div class="hp-shadow"></div>
-        </div>
-
-      </div><!-- end device-stage -->
-    </div><!-- end showcase-scene -->
+    <!-- Three.js WebGL Canvas Container -->
+    <div id="three-hero-canvas"></div>
 
     <!-- Scroll indicator -->
     <div class="hero-scroll" style="z-index: 10;"><span>Scroll</span><div class="scroll-arrow">&darr;</div></div>
   </section>
 
   <!-- ========== STATS TICKER ========== -->
+
   <div class="stats-ticker">
     <div class="ticker-track">
       <div class="ticker-item"><span class="ticker-num">10+</span><span class="ticker-label">Projects Delivered</span></div>
