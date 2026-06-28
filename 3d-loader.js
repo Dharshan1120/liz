@@ -467,7 +467,7 @@ function initThreeScene() {
   });
 
   hpGroup.scale.set(0.55, 0.55, 0.55);
-  hpGroup.position.set(1.65, 0.54, 1.0);
+  hpGroup.position.set(1.65, 0.76, 1.0);
   hpGroup.rotation.x = 0.3;
   hpGroup.rotation.y = -0.4;
   scene.add(hpGroup);
@@ -603,7 +603,7 @@ function initThreeScene() {
     tabletGroup.rotation.y = -0.25 - mouseX * 0.04;
 
     // Headphones almost static
-    hpGroup.position.y = 0.54 + Math.sin(t * 0.4 + 0.5) * 0.012;
+    hpGroup.position.y = 0.76 + Math.sin(t * 0.4 + 0.5) * 0.012;
     hpGroup.rotation.z = Math.sin(t * 0.3) * 0.008;
 
     // Rim light orbit
