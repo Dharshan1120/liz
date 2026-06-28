@@ -347,8 +347,8 @@ function initThreeScene() {
   lCam.position.set(0, 1.8, 0.038);
   lidGroup.add(lCam);
 
-  // Tilt lid open ~110°
-  lidGroup.rotation.x = -Math.PI * (110/180);
+  // Tilt lid open ~108° (18 degrees tilted backwards from vertical)
+  lidGroup.rotation.x = Math.PI * (18/180);
   laptopGroup.add(lidGroup);
 
   // Apple-like logo on lid back (sits slightly backward on the Z face)
@@ -435,34 +435,34 @@ function initThreeScene() {
   ════════════════════════════════════════════════════════════════════════ */
   const hpGroup = new THREE.Group();
 
-  // Headband arc (upright torus in XY plane)
-  const bandGeo = new THREE.TorusGeometry(0.4, 0.03, 12, 48, Math.PI);
+  // Headband arc (upright torus in XY plane, shifted up)
+  const bandGeo = new THREE.TorusGeometry(0.35, 0.03, 12, 48, Math.PI);
   const band = mesh(bandGeo, matHPBand);
-  band.position.set(0, 0, 0);
+  band.position.set(0, 0.2, 0);
   hpGroup.add(band);
 
   // Arms & Ear Cups
   [-1,1].forEach(side => {
     // Metal extension arms extending downwards
-    const arm = mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.22, 12), matHPBand);
-    arm.position.set(side * 0.4, -0.1, 0);
+    const arm = mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.25, 12), matHPBand);
+    arm.position.set(side * 0.35, 0.08, 0);
     hpGroup.add(arm);
 
     // Ear cup cylinders rotated sideways to face ears (pointing along X axis)
-    const cup = mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.1, 24), matHPCup);
+    const cup = mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.1, 24), matHPCup);
     cup.rotation.z = Math.PI/2;
-    cup.position.set(side * 0.4, -0.22, 0);
+    cup.position.set(side * 0.35, -0.05, 0);
     hpGroup.add(cup);
 
     // Cup cushion
-    const cushion = mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.06, 24), new THREE.MeshStandardMaterial({ color:0x0a0a0a, roughness:0.95 }));
+    const cushion = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.06, 24), new THREE.MeshStandardMaterial({ color:0x080808, roughness:0.95 }));
     cushion.rotation.z = Math.PI/2;
-    cushion.position.set(side * (0.4 - side * 0.05), -0.22, 0);
+    cushion.position.set(side * (0.35 - side * 0.04), -0.05, 0);
     hpGroup.add(cushion);
 
     // LED dot indicator
     const led = mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshStandardMaterial({ color:0x888888, emissive:0x8888ff, emissiveIntensity:0.5 }));
-    led.position.set(side * 0.45, -0.22, 0);
+    led.position.set(side * 0.4, -0.05, 0);
     hpGroup.add(led);
   });
 
