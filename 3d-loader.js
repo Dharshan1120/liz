@@ -41,17 +41,17 @@ function initThreeScene() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.1;
+  renderer.toneMappingExposure = 1.6;
   container.appendChild(renderer.domElement);
 
   /* ── SCENE & FOG ── */
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x020209, 0.055);
+  scene.fog = new THREE.FogExp2(0x020209, 0.022);
 
   /* ── CAMERA ── */
-  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-  camera.position.set(0, 2.8, 7.2);
-  camera.lookAt(0, 0.3, 0);
+  const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(0, 2.2, 4.8);
+  camera.lookAt(0, 0.5, 0);
 
   /* ── MATERIALS ── */
   const matAluminium = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.9, roughness: 0.15 });
@@ -289,9 +289,9 @@ function initThreeScene() {
   }, 540, 720);
 
   /* ── SCREEN MATERIAL ── */
-  const matLaptopScreen = new THREE.MeshStandardMaterial({ map: laptopTex, metalness: 0.0, roughness: 0.15, emissive: 0x222244, emissiveIntensity: 0.2 });
-  const matPhoneScreen  = new THREE.MeshStandardMaterial({ map: phoneTex,  metalness: 0.0, roughness: 0.15, emissive: 0x111133, emissiveIntensity: 0.2 });
-  const matTabletScreen = new THREE.MeshStandardMaterial({ map: tabletTex, metalness: 0.0, roughness: 0.15, emissive: 0x111133, emissiveIntensity: 0.2 });
+  const matLaptopScreen = new THREE.MeshStandardMaterial({ map: laptopTex, metalness: 0.0, roughness: 0.1, emissive: 0x445588, emissiveIntensity: 0.6 });
+  const matPhoneScreen  = new THREE.MeshStandardMaterial({ map: phoneTex,  metalness: 0.0, roughness: 0.1, emissive: 0x334466, emissiveIntensity: 0.5 });
+  const matTabletScreen = new THREE.MeshStandardMaterial({ map: tabletTex, metalness: 0.0, roughness: 0.1, emissive: 0x334466, emissiveIntensity: 0.5 });
 
   /* ── HELPER: Rounded Box via BoxGeometry ── */
   function rBox(w, h, d) {
@@ -338,7 +338,7 @@ function initThreeScene() {
   // Actual screen
   const lScreen = mesh(new THREE.PlaneGeometry(2.5, 1.62), matLaptopScreen);
   lScreen.position.set(0, 0.99, 0.965);
-  lScreen.material.emissiveIntensity = 0.4;
+  lScreen.material.emissiveIntensity = 0.8;
   lidGroup.add(lScreen);
 
   // Camera dot
@@ -362,8 +362,8 @@ function initThreeScene() {
   lHinge.position.set(0, 0.04, 0);
   lidGroup.add(lHinge);
 
-  laptopGroup.position.set(0, 0.55, 0);
-  laptopGroup.rotation.y = 0.05;
+  laptopGroup.position.set(0, 0.55, 0.2);
+  laptopGroup.rotation.y = 0.03;
   scene.add(laptopGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
@@ -396,8 +396,8 @@ function initThreeScene() {
   pBar.position.set(0, -0.65, 0.048);
   phoneGroup.add(pBar);
 
-  phoneGroup.position.set(-2.4, 0.75, 0.4);
-  phoneGroup.rotation.y = 0.35;
+  phoneGroup.position.set(-1.7, 0.72, 0.5);
+  phoneGroup.rotation.y = 0.3;
   phoneGroup.rotation.z = 0.02;
   scene.add(phoneGroup);
 
@@ -424,9 +424,9 @@ function initThreeScene() {
   tCam.position.set(0.62, 0, -0.046);
   tabletGroup.add(tCam);
 
-  tabletGroup.position.set(2.45, 1.1, 0.2);
-  tabletGroup.rotation.y = -0.28;
-  tabletGroup.rotation.x = 0.05;
+  tabletGroup.position.set(1.85, 1.05, 0.35);
+  tabletGroup.rotation.y = -0.25;
+  tabletGroup.rotation.x = 0.04;
   scene.add(tabletGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
@@ -469,63 +469,70 @@ function initThreeScene() {
     hpGroup.add(led);
   });
 
-  hpGroup.position.set(-1.4, 0.52, 1.5);
+  hpGroup.scale.set(0.55, 0.55, 0.55);
+  hpGroup.position.set(1.65, 0.54, 1.0);
   hpGroup.rotation.x = 0.3;
-  hpGroup.rotation.y = 0.5;
+  hpGroup.rotation.y = -0.4;
   scene.add(hpGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
      DESK SURFACE
   ════════════════════════════════════════════════════════════════════════ */
-  const desk = mesh(new THREE.BoxGeometry(12, 0.06, 7), matDesk, false, true);
+  const desk = mesh(new THREE.BoxGeometry(7, 0.05, 3.5), matDesk, false, true);
   desk.position.set(0, 0.5, 0.5);
   scene.add(desk);
 
   // Desk edge highlight
-  const deskEdge = mesh(new THREE.BoxGeometry(12, 0.008, 0.012), matFrameEdge, false, false);
-  deskEdge.position.set(0, 0.53, 4.0);
+  const deskEdge = mesh(new THREE.BoxGeometry(7, 0.006, 0.01), matFrameEdge, false, false);
+  deskEdge.position.set(0, 0.525, 2.25);
   scene.add(deskEdge);
 
   /* ════════════════════════════════════════════════════════════════════════
      LIGHTING
   ════════════════════════════════════════════════════════════════════════ */
-  // Key light (white, soft from upper left)
-  const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
-  keyLight.position.set(-4, 8, 6);
+  // Key light (white, soft from upper-front-left — main illumination)
+  const keyLight = new THREE.DirectionalLight(0xffffff, 2.8);
+  keyLight.position.set(-3, 6, 5);
   keyLight.castShadow = true;
   keyLight.shadow.mapSize.width = 2048;
   keyLight.shadow.mapSize.height = 2048;
   keyLight.shadow.camera.near = 0.5;
-  keyLight.shadow.camera.far = 40;
-  keyLight.shadow.camera.left = -8;
-  keyLight.shadow.camera.right = 8;
-  keyLight.shadow.camera.top = 8;
-  keyLight.shadow.camera.bottom = -8;
-  keyLight.shadow.bias = -0.001;
+  keyLight.shadow.camera.far = 25;
+  keyLight.shadow.camera.left = -5;
+  keyLight.shadow.camera.right = 5;
+  keyLight.shadow.camera.top = 5;
+  keyLight.shadow.camera.bottom = -5;
+  keyLight.shadow.bias = -0.0005;
+  keyLight.shadow.radius = 4;
   scene.add(keyLight);
 
-  // Fill light (cool blue, right side)
-  const fillLight = new THREE.DirectionalLight(0x4466ff, 0.6);
-  fillLight.position.set(6, 4, 3);
+  // Fill light (cool blue, right side — softens shadows)
+  const fillLight = new THREE.DirectionalLight(0x6688ff, 1.0);
+  fillLight.position.set(4, 3, 3);
   scene.add(fillLight);
 
-  // Rim / purple light (behind devices)
-  const rimLight = new THREE.PointLight(0x8833ff, 1.2, 12);
-  rimLight.position.set(0, 3, -3);
+  // Rim / purple light (behind devices — silhouette glow)
+  const rimLight = new THREE.PointLight(0x8844ff, 1.8, 10);
+  rimLight.position.set(0, 2.5, -2.5);
   scene.add(rimLight);
 
-  // Warm desk lamp glow (under-light)
-  const deskLight = new THREE.PointLight(0x8888ff, 0.4, 6);
+  // Desk under-glow
+  const deskLight = new THREE.PointLight(0x6666cc, 0.6, 5);
   deskLight.position.set(0, 0.6, 0.5);
   scene.add(deskLight);
 
-  // Ambient base
-  scene.add(new THREE.AmbientLight(0x111122, 0.8));
+  // Ambient base (raised significantly so devices are clearly visible)
+  scene.add(new THREE.AmbientLight(0x222233, 1.6));
 
-  // Screen glow light (for laptop)
-  const screenGlow = new THREE.PointLight(0x4466ff, 0.5, 3);
-  screenGlow.position.set(0, 1.8, 0.5);
+  // Screen glow light (illuminates from laptop screen outward)
+  const screenGlow = new THREE.PointLight(0x6688ff, 0.8, 4);
+  screenGlow.position.set(0, 1.6, 0.8);
   scene.add(screenGlow);
+
+  // Secondary top light for overall brightness
+  const topLight = new THREE.DirectionalLight(0xeeeeff, 0.8);
+  topLight.position.set(0, 8, 0);
+  scene.add(topLight);
 
   /* ════════════════════════════════════════════════════════════════════════
      PARTICLES
@@ -576,31 +583,31 @@ function initThreeScene() {
     mouseY += (targetMouseY - mouseY) * 0.04;
 
     // Camera breathing + parallax
-    camera.position.x = mouseX * 0.6;
-    camera.position.y = 2.8 - mouseY * 0.3 + Math.sin(t * 0.4) * 0.04;
-    camera.position.z = 7.2 + Math.sin(t * 0.3) * 0.05;
-    camera.lookAt(mouseX * 0.15, 0.3 + mouseY * 0.05, 0);
+    camera.position.x = mouseX * 0.4;
+    camera.position.y = 2.2 - mouseY * 0.2 + Math.sin(t * 0.4) * 0.03;
+    camera.position.z = 4.8 + Math.sin(t * 0.3) * 0.03;
+    camera.lookAt(mouseX * 0.1, 0.5 + mouseY * 0.04, 0);
 
     // Laptop float
-    laptopGroup.position.y = 0.55 + Math.sin(t * 0.7) * 0.05;
-    laptopGroup.rotation.y = 0.05 + mouseX * 0.08;
-    laptopGroup.rotation.x = mouseY * 0.04;
+    laptopGroup.position.y = 0.55 + Math.sin(t * 0.7) * 0.04;
+    laptopGroup.rotation.y = 0.03 + mouseX * 0.06;
+    laptopGroup.rotation.x = mouseY * 0.03;
 
     // Screen glow pulse
-    screenGlow.intensity = 0.4 + Math.sin(t * 1.2) * 0.15;
-    lScreen.material.emissiveIntensity = 0.35 + Math.sin(t * 0.9) * 0.08;
+    screenGlow.intensity = 0.7 + Math.sin(t * 1.2) * 0.2;
+    lScreen.material.emissiveIntensity = 0.7 + Math.sin(t * 0.9) * 0.1;
 
     // Phone hover
-    phoneGroup.position.y = 0.75 + Math.sin(t * 0.85 + 1.0) * 0.04;
-    phoneGroup.rotation.y = 0.35 - mouseX * 0.06;
+    phoneGroup.position.y = 0.72 + Math.sin(t * 0.85 + 1.0) * 0.03;
+    phoneGroup.rotation.y = 0.3 - mouseX * 0.04;
 
     // Tablet tilt
-    tabletGroup.position.y = 1.1 + Math.sin(t * 0.65 + 2.0) * 0.045;
-    tabletGroup.rotation.y = -0.28 - mouseX * 0.05;
+    tabletGroup.position.y = 1.05 + Math.sin(t * 0.65 + 2.0) * 0.035;
+    tabletGroup.rotation.y = -0.25 - mouseX * 0.04;
 
-    // Headphones subtle bob
-    hpGroup.position.y = 0.52 + Math.sin(t * 0.55 + 0.5) * 0.03;
-    hpGroup.rotation.z = Math.sin(t * 0.4) * 0.02;
+    // Headphones almost static
+    hpGroup.position.y = 0.54 + Math.sin(t * 0.4 + 0.5) * 0.012;
+    hpGroup.rotation.z = Math.sin(t * 0.3) * 0.008;
 
     // Rim light orbit
     rimLight.position.x = Math.sin(t * 0.3) * 2;
