@@ -56,65 +56,137 @@ body.loading {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: min(360px, 76vw);
-  height: 150px;
+  width: min(230px, 58vw);
+  height: 220px;
   z-index: 2;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   perspective: 700px;
 }
 
-.loader-logo-svg {
+.loader-logo-3d {
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: visible;
   transform: rotateX(8deg) rotateY(-7deg);
-  filter: drop-shadow(0 18px 25px rgba(111, 94, 255, 0.22));
+  filter: drop-shadow(0 18px 28px rgba(111, 94, 255, 0.22));
 }
 
-.loader-logo-svg text {
-  font-family: 'Space Grotesk', Arial, sans-serif;
-  font-size: 116px;
-  font-weight: 800;
-  letter-spacing: 10px;
+.loader-logo-3d img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
 }
 
-.loader-logo-depth {
-  fill: transparent;
-  stroke: #403a73;
-  stroke-width: 10px;
-  transform: translate(8px, 10px);
+.loader-logo-depth-img {
   opacity: 0;
-  animation: logoDepth 0.6s ease 1.45s forwards;
+  transform: translate3d(10px, 12px, -20px) scale(1.02);
+  filter: brightness(0) saturate(0) invert(16%) sepia(25%) saturate(1320%) hue-rotate(212deg) brightness(76%) contrast(95%);
+  animation: logoDepth 0.6s ease 1.1s forwards;
 }
 
-.loader-logo-stroke {
-  fill: transparent;
-  stroke: #ffffff;
-  stroke-width: 3px;
-  stroke-linejoin: round;
-  stroke-dasharray: 760;
-  stroke-dashoffset: 760;
-  animation: drawLiz 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-.loader-logo-fill {
-  fill: #ffffff;
-  stroke: #ffffff;
-  stroke-width: 1px;
+.loader-logo-draw-img {
   opacity: 0;
-  animation: fillLiz 0.55s ease 1.5s forwards;
+  transform: translateY(10px) scale(0.98);
+  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(255,255,255,0.32));
 }
 
-@keyframes drawLiz {
-  to { stroke-dashoffset: 0; }
+.draw-step-top {
+  clip-path: inset(0 0 62% 0);
+  animation: drawStepTop 0.8s cubic-bezier(0.72, 0, 0.18, 1) forwards,
+    logoGlow 1.8s ease-in-out 1.55s infinite alternate;
+}
+
+.draw-step-middle {
+  clip-path: inset(34% 0 36% 0);
+  animation: drawStepMiddle 0.72s cubic-bezier(0.72, 0, 0.18, 1) 0.58s forwards,
+    logoGlow 1.8s ease-in-out 1.55s infinite alternate;
+}
+
+.draw-step-bottom {
+  clip-path: inset(62% 0 0 0);
+  animation: drawStepBottom 0.82s cubic-bezier(0.72, 0, 0.18, 1) 1.06s forwards,
+    logoGlow 1.8s ease-in-out 1.55s infinite alternate;
+}
+
+.loader-logo-pen {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 16px rgba(255,255,255,0.9), 0 0 28px rgba(161,134,255,0.55);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: logoPen 1.95s cubic-bezier(0.72, 0, 0.18, 1) forwards;
+}
+
+@keyframes drawStepTop {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 62% 0);
+    transform: translateY(10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 62% 0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drawStepMiddle {
+  0% {
+    opacity: 0;
+    clip-path: inset(34% 100% 36% 0);
+    transform: translateY(6px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(34% 0 36% 0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drawStepBottom {
+  0% {
+    opacity: 0;
+    clip-path: inset(62% 100% 0 0);
+    transform: translateY(6px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(62% 0 0 0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes logoPen {
+  0% { opacity: 0; left: 36%; top: 16%; }
+  9% { opacity: 1; }
+  34% { left: 64%; top: 18%; }
+  48% { left: 33%; top: 49%; }
+  67% { left: 67%; top: 51%; }
+  88% { left: 31%; top: 79%; }
+  96% { opacity: 1; left: 64%; top: 82%; }
+  100% { opacity: 0; left: 64%; top: 82%; }
 }
 
 @keyframes logoDepth {
-  to { opacity: 0.9; }
+  to {
+    opacity: 0.7;
+  }
 }
 
-@keyframes fillLiz {
-  to { opacity: 1; filter: drop-shadow(0 0 16px rgba(255,255,255,0.35)); }
+@keyframes logoGlow {
+  from {
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.22));
+  }
+  to {
+    filter: brightness(0) invert(1) drop-shadow(0 0 24px rgba(161,134,255,0.5));
+  }
 }
 
 /* ---------- GENERAL LOGO STYLING ---------- */
@@ -273,6 +345,10 @@ body.loading {
 /* â”€â”€ RESPONSIVE â”€â”€ */
 @media (max-width: 768px) {
   #hero { min-height: 480px; }
+  .loader-logo-wrap {
+    width: min(180px, 64vw);
+    height: 190px;
+  }
 }
 
 /* End of 3d-loader.css */

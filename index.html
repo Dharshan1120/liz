@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="3d-loader.css?v=5" />
+  <link rel="stylesheet" href="3d-loader.css?v=7" />
   <!-- Three.js for true WebGL 3D hero -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
@@ -20,14 +20,15 @@
     <div class="loader-bg"></div>
     <div class="loader-glow loader-glow-1"></div>
     <div class="loader-glow loader-glow-2"></div>
-
-    <!-- Drawn 3D LIZ wordmark -->
+    <!-- Transparent logo cutout -->
     <div class="loader-logo-wrap">
-      <svg class="loader-logo-svg" viewBox="0 0 360 150" role="img" aria-label="LIZ">
-        <text class="loader-logo-depth" x="180" y="105" text-anchor="middle">LIZ</text>
-        <text class="loader-logo-stroke" x="180" y="105" text-anchor="middle">LIZ</text>
-        <text class="loader-logo-fill" x="180" y="105" text-anchor="middle">LIZ</text>
-      </svg>
+      <div class="loader-logo-3d" role="img" aria-label="LIZ logo">
+        <img src="liz-logo-loader.png" alt="" class="loader-logo-depth-img" aria-hidden="true" />
+        <img src="liz-logo-loader.png" alt="" class="loader-logo-draw-img draw-step draw-step-top" aria-hidden="true" />
+        <img src="liz-logo-loader.png" alt="" class="loader-logo-draw-img draw-step draw-step-middle" aria-hidden="true" />
+        <img src="liz-logo-loader.png" alt="LIZ" class="loader-logo-draw-img draw-step draw-step-bottom" />
+        <span class="loader-logo-pen" aria-hidden="true"></span>
+      </div>
     </div>
 
     <!-- Percentage Counter -->
