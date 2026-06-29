@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let percent = 0;
 
   const interval = setInterval(() => {
-    const increment = Math.floor(Math.random() * 6) + 1;
+    const increment = Math.floor(Math.random() * 4) + 1;
     percent = Math.min(percent + increment, 100);
     loaderPercent.textContent = percent;
     loaderBar.style.width = percent + '%';
@@ -47,11 +47,39 @@ function initThreeScene() {
   /* ── SCENE & FOG ── */
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x020209, 0.022);
+  const stage = new THREE.Group();
+  scene.add(stage);
 
   /* ── CAMERA ── */
   const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
-  camera.position.set(0, 2.2, 4.8);
-  camera.lookAt(0, 0.5, 0);
+  const cameraTarget = new THREE.Vector3(0, 0.55, 0);
+  const cameraBase = new THREE.Vector3();
+
+  function frameScene() {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    const aspect = w / Math.max(h, 1);
+    const isMobile = w < 768;
+    const isShort = h < 720;
+
+    camera.aspect = aspect;
+    camera.fov = isMobile ? 50 : 42;
+    cameraBase.set(
+      0,
+      isMobile ? 2.1 : 2.25,
+      isMobile ? 6.9 : (isShort ? 6.15 : 5.75)
+    );
+    camera.position.copy(cameraBase);
+    cameraTarget.set(0, isMobile ? 0.72 : 0.62, 0);
+    camera.updateProjectionMatrix();
+
+    const scale = isMobile ? Math.min(Math.max(w / 390, 0.78), 0.92) : (isShort ? 0.9 : 0.96);
+    stage.scale.setScalar(scale);
+    stage.position.set(0, isMobile ? -0.12 : -0.24, isMobile ? -0.35 : -0.15);
+  }
+
+  frameScene();
+  camera.lookAt(cameraTarget);
 
   /* ── MATERIALS ── */
   const matAluminium = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.9, roughness: 0.15 });
@@ -317,6 +345,29 @@ function initThreeScene() {
   lKeyboard.position.set(0, 0.09, -0.05);
   laptopGroup.add(lKeyboard);
 
+  const keyMat = new THREE.MeshStandardMaterial({ color:0x1f1f24, metalness:0.25, roughness:0.55 });
+  const keyRows = [
+    { count: 12, z: -0.58, width: 0.14 },
+    { count: 11, z: -0.36, width: 0.15 },
+    { count: 10, z: -0.14, width: 0.16 },
+    { count: 9,  z: 0.08,  width: 0.17 }
+  ];
+  keyRows.forEach(row => {
+    const totalWidth = row.count * row.width + (row.count - 1) * 0.035;
+    for (let i = 0; i < row.count; i++) {
+      const key = mesh(new THREE.BoxGeometry(row.width, 0.018, 0.115), keyMat, false, false);
+      key.position.set(-totalWidth / 2 + row.width / 2 + i * (row.width + 0.035), 0.105, row.z);
+      laptopGroup.add(key);
+    }
+  });
+  const spaceKey = mesh(new THREE.BoxGeometry(0.92, 0.018, 0.12), keyMat, false, false);
+  spaceKey.position.set(0, 0.105, 0.3);
+  laptopGroup.add(spaceKey);
+  const powerKey = mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.012, 20), keyMat, false, false);
+  powerKey.rotation.x = Math.PI / 2;
+  powerKey.position.set(1.08, 0.108, -0.72);
+  laptopGroup.add(powerKey);
+
   // Trackpad
   const lTrackpad = mesh(new THREE.BoxGeometry(0.65, 0.005, 0.42), new THREE.MeshStandardMaterial({ color:0x151515, metalness:0.5, roughness:0.4 }));
   lTrackpad.position.set(0, 0.09, 0.65);
@@ -365,7 +416,7 @@ function initThreeScene() {
 
   laptopGroup.position.set(0, 0.55, 0.2);
   laptopGroup.rotation.y = 0.03;
-  scene.add(laptopGroup);
+  stage.add(laptopGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
      SMARTPHONE
@@ -397,10 +448,10 @@ function initThreeScene() {
   pBar.position.set(0, -0.65, 0.048);
   phoneGroup.add(pBar);
 
-  phoneGroup.position.set(-1.7, 0.72, 0.5);
-  phoneGroup.rotation.y = 0.3;
+  phoneGroup.position.set(-2.18, 1.26, 0.18);
+  phoneGroup.rotation.y = 0.18;
   phoneGroup.rotation.z = 0.02;
-  scene.add(phoneGroup);
+  stage.add(phoneGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
      TABLET
@@ -425,18 +476,18 @@ function initThreeScene() {
   tCam.position.set(0.62, 0, -0.046);
   tabletGroup.add(tCam);
 
-  tabletGroup.position.set(1.85, 1.05, 0.35);
-  tabletGroup.rotation.y = -0.25;
+  tabletGroup.position.set(2.2, 1.56, 0.08);
+  tabletGroup.rotation.y = -0.18;
   tabletGroup.rotation.x = 0.04;
-  scene.add(tabletGroup);
+  stage.add(tabletGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
      HEADPHONES
   ════════════════════════════════════════════════════════════════════════ */
   const hpGroup = new THREE.Group();
 
-  // Headband arc (upright torus in XY plane, shifted up)
-  const bandGeo = new THREE.TorusGeometry(0.35, 0.03, 12, 48, Math.PI);
+  // Compact premium headset, resting flat on the desk
+  const bandGeo = new THREE.TorusGeometry(0.42, 0.045, 14, 56, Math.PI);
   const band = mesh(bandGeo, matHPBand);
   band.position.set(0, 0.2, 0);
   hpGroup.add(band);
@@ -444,45 +495,45 @@ function initThreeScene() {
   // Arms & Ear Cups
   [-1,1].forEach(side => {
     // Metal extension arms extending downwards
-    const arm = mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.25, 12), matHPBand);
-    arm.position.set(side * 0.35, 0.08, 0);
+    const arm = mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.22, 12), matHPBand);
+    arm.position.set(side * 0.42, 0.08, 0);
     hpGroup.add(arm);
 
     // Ear cup cylinders rotated sideways to face ears (pointing along X axis)
-    const cup = mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.1, 24), matHPCup);
+    const cup = mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.11, 24), matHPCup);
     cup.rotation.z = Math.PI/2;
-    cup.position.set(side * 0.35, -0.05, 0);
+    cup.position.set(side * 0.42, -0.05, 0);
     hpGroup.add(cup);
 
     // Cup cushion
     const cushion = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.06, 24), new THREE.MeshStandardMaterial({ color:0x080808, roughness:0.95 }));
     cushion.rotation.z = Math.PI/2;
-    cushion.position.set(side * (0.35 - side * 0.04), -0.05, 0);
+    cushion.position.set(side * (0.42 - side * 0.045), -0.05, 0);
     hpGroup.add(cushion);
 
     // LED dot indicator
     const led = mesh(new THREE.SphereGeometry(0.015, 8, 8), new THREE.MeshStandardMaterial({ color:0x888888, emissive:0x8888ff, emissiveIntensity:0.5 }));
-    led.position.set(side * 0.4, -0.05, 0);
+    led.position.set(side * 0.475, -0.05, 0);
     hpGroup.add(led);
   });
 
-  hpGroup.scale.set(0.55, 0.55, 0.55);
-  hpGroup.position.set(1.65, 0.76, 1.0);
-  hpGroup.rotation.x = 0.3;
-  hpGroup.rotation.y = -0.4;
-  scene.add(hpGroup);
+  hpGroup.scale.set(0.68, 0.68, 0.68);
+  hpGroup.position.set(2.35, 0.61, 1.1);
+  hpGroup.rotation.x = Math.PI / 2;
+  hpGroup.rotation.z = -0.18;
+  stage.add(hpGroup);
 
   /* ════════════════════════════════════════════════════════════════════════
      DESK SURFACE
   ════════════════════════════════════════════════════════════════════════ */
-  const desk = mesh(new THREE.BoxGeometry(7, 0.05, 3.5), matDesk, false, true);
-  desk.position.set(0, 0.5, 0.5);
-  scene.add(desk);
+  const desk = mesh(new THREE.BoxGeometry(6.6, 0.05, 2.75), matDesk, false, true);
+  desk.position.set(0, 0.5, 0.25);
+  stage.add(desk);
 
   // Desk edge highlight
-  const deskEdge = mesh(new THREE.BoxGeometry(7, 0.006, 0.01), matFrameEdge, false, false);
-  deskEdge.position.set(0, 0.525, 2.25);
-  scene.add(deskEdge);
+  const deskEdge = mesh(new THREE.BoxGeometry(6.6, 0.006, 0.01), matFrameEdge, false, false);
+  deskEdge.position.set(0, 0.525, 1.63);
+  stage.add(deskEdge);
 
   /* ════════════════════════════════════════════════════════════════════════
      LIGHTING
@@ -561,8 +612,7 @@ function initThreeScene() {
   ════════════════════════════════════════════════════════════════════════ */
   window.addEventListener('resize', () => {
     const w = container.clientWidth, h = container.clientHeight;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
+    frameScene();
     renderer.setSize(w, h);
   });
 
@@ -580,13 +630,15 @@ function initThreeScene() {
     mouseY += (targetMouseY - mouseY) * 0.04;
 
     // Camera breathing + parallax
-    camera.position.x = mouseX * 0.4;
-    camera.position.y = 2.2 - mouseY * 0.2 + Math.sin(t * 0.4) * 0.03;
-    camera.position.z = 4.8 + Math.sin(t * 0.3) * 0.03;
-    camera.lookAt(mouseX * 0.1, 0.5 + mouseY * 0.04, 0);
+    camera.position.set(
+      cameraBase.x + mouseX * 0.32,
+      cameraBase.y - mouseY * 0.14 + Math.sin(t * 0.4) * 0.02,
+      cameraBase.z + Math.sin(t * 0.3) * 0.02
+    );
+    camera.lookAt(mouseX * 0.08, cameraTarget.y + mouseY * 0.03, cameraTarget.z);
 
-    // Laptop float
-    laptopGroup.position.y = 0.55 + Math.sin(t * 0.7) * 0.04;
+    // Devices stay grounded; only subtle camera-driven turns remain
+    laptopGroup.position.y = 0.55;
     laptopGroup.rotation.y = 0.03 + mouseX * 0.06;
     laptopGroup.rotation.x = mouseY * 0.03;
 
@@ -594,17 +646,13 @@ function initThreeScene() {
     screenGlow.intensity = 0.7 + Math.sin(t * 1.2) * 0.2;
     lScreen.material.emissiveIntensity = 0.7 + Math.sin(t * 0.9) * 0.1;
 
-    // Phone hover
-    phoneGroup.position.y = 0.72 + Math.sin(t * 0.85 + 1.0) * 0.03;
-    phoneGroup.rotation.y = 0.3 - mouseX * 0.04;
+    phoneGroup.position.y = 1.26;
+    phoneGroup.rotation.y = 0.18 - mouseX * 0.025;
 
-    // Tablet tilt
-    tabletGroup.position.y = 1.05 + Math.sin(t * 0.65 + 2.0) * 0.035;
-    tabletGroup.rotation.y = -0.25 - mouseX * 0.04;
+    tabletGroup.position.y = 1.56;
+    tabletGroup.rotation.y = -0.18 - mouseX * 0.025;
 
-    // Headphones almost static
-    hpGroup.position.y = 0.76 + Math.sin(t * 0.4 + 0.5) * 0.012;
-    hpGroup.rotation.z = Math.sin(t * 0.3) * 0.008;
+    hpGroup.position.y = 0.61;
 
     // Rim light orbit
     rimLight.position.x = Math.sin(t * 0.3) * 2;

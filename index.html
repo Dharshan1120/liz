@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="3d-loader.css" />
+  <link rel="stylesheet" href="3d-loader.css?v=5" />
   <!-- Three.js for true WebGL 3D hero -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
@@ -21,10 +21,13 @@
     <div class="loader-glow loader-glow-1"></div>
     <div class="loader-glow loader-glow-2"></div>
 
-    <!-- Logo -->
+    <!-- Drawn 3D LIZ wordmark -->
     <div class="loader-logo-wrap">
-      <div class="loader-avatars-glow"></div>
-      <img src="logo.jpg" alt="LIZ Logo" class="loader-logo-img" />
+      <svg class="loader-logo-svg" viewBox="0 0 360 150" role="img" aria-label="LIZ">
+        <text class="loader-logo-depth" x="180" y="105" text-anchor="middle">LIZ</text>
+        <text class="loader-logo-stroke" x="180" y="105" text-anchor="middle">LIZ</text>
+        <text class="loader-logo-fill" x="180" y="105" text-anchor="middle">LIZ</text>
+      </svg>
     </div>
 
     <!-- Percentage Counter -->
@@ -387,6 +390,6 @@
   <div class="custom-cursor" id="cursor"></div>
   <div class="custom-cursor-dot" id="cursorDot"></div>
   <script src="script.js"></script>
-  <script src="3d-loader.js"></script>
+  <script src="3d-loader.js?v=5"></script>
 </body>
 </html>
