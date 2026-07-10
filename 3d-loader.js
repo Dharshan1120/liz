@@ -701,13 +701,19 @@ function initThreeScene() {
     screenGlow.intensity = 0.7 + Math.sin(t * 1.2) * 0.2;
     lScreen.material.emissiveIntensity = 0.7 + Math.sin(t * 0.9) * 0.1;
 
-    phoneGroup.position.y = 1.26;
-    phoneGroup.rotation.y = 0.18 - mouseX * 0.025;
+    if (phoneGroup) {
+      phoneGroup.position.y = 1.26;
+      phoneGroup.rotation.y = 0.18 - mouseX * 0.025;
+    }
 
-    tabletGroup.position.y = 1.56;
-    tabletGroup.rotation.y = -0.18 - mouseX * 0.025;
+    if (tabletGroup) {
+      tabletGroup.position.y = 1.56;
+      tabletGroup.rotation.y = -0.18 - mouseX * 0.025;
+    }
 
-    hpGroup.position.y = 0.61;
+    if (hpGroup) {
+      hpGroup.position.y = 0.61;
+    }
 
     // Rim light orbit
     rimLight.position.x = Math.sin(t * 0.3) * 2;

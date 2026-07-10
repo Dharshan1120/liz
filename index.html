@@ -254,51 +254,97 @@
       <h2 class="section-heading">PROJECTS</h2>
       <p class="section-subheading">Some things we have shipped</p>
       <div class="projects-grid">
-        <div class="project-card card-reveal">
+        <div class="project-card card-reveal" id="vijay-fitness-card">
           <div class="project-preview">
-            <div class="project-preview-inner pm-saas">
-              <div class="pm-bar"><span></span><span></span><span></span></div>
-              <div class="pm-page-content pm-dashboard">
-                <div class="pm-sidebar-sim"><div></div><div class="active"></div><div></div><div></div></div>
-                <div class="pm-dash-main"><div class="pm-stats-row"><div></div><div></div><div></div></div><div class="pm-chart-sim"></div></div>
+            <div class="carousel-track" id="vijay-carousel-track">
+              <div class="carousel-slide active" data-index="0">
+                <img src="assets/vijay-screenshot-1.jpg" loading="lazy" alt="Vijay Fitness - Analytics Dashboard">
               </div>
+              <div class="carousel-slide" data-index="1">
+                <img src="assets/vijay-screenshot-2.jpg" loading="lazy" alt="Vijay Fitness - Pending Payments">
+              </div>
+              <div class="carousel-slide" data-index="2">
+                <img src="assets/vijay-screenshot-3.jpg" loading="lazy" alt="Vijay Fitness - Add Member Form">
+              </div>
+              <div class="carousel-slide" data-index="3">
+                <img src="assets/vijay-screenshot-4.jpg" loading="lazy" alt="Vijay Fitness - Member Directory">
+              </div>
+            </div>
+            <div class="carousel-indicators">
+              <span class="indicator active" data-index="0"></span>
+              <span class="indicator" data-index="1"></span>
+              <span class="indicator" data-index="2"></span>
+              <span class="indicator" data-index="3"></span>
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">GymFlow Lite</h3>
-            <p class="project-desc">A complete gym management solution designed to simplify member management, attendance tracking, payment monitoring, and day-to-day gym operations.</p>
-            <div class="project-tech-row">
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
-            </div>
-            <a href="#contact" class="project-preview-link">Preview &nearr;</a>
-          </div>
-        </div>
-        <div class="project-card card-reveal">
-          <div class="project-preview">
-            <div class="project-preview-inner pm-ecommerce">
-              <div class="pm-bar"><span></span><span></span><span></span></div>
-              <div class="pm-page-content">
-                <div class="pm-nav-sim"><div class="pm-logo-sim"></div><div class="pm-links-sim"><div></div><div></div><div></div></div></div>
-                <div class="pm-hero-sim"></div>
-                <div class="pm-cards-sim"><div></div><div></div><div></div></div>
+            <div class="project-header-row">
+              <img src="assets/vijay-logo.jpg" alt="Vijay Fitness Logo" class="project-logo">
+              <div>
+                <h3 class="project-title">Vijay Fitness</h3>
               </div>
             </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Aesthetic Fitness Gym Management System</h3>
-            <p class="project-desc">A modern multi-branch gym management platform built to manage independent branches while providing centralized business control and analytics.</p>
+            <p class="project-desc">A custom gym management system built for Vijay Fitness to simplify member management, attendance tracking, QR check-ins, and payment monitoring through a modern, responsive dashboard.</p>
             <div class="project-tech-row">
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" /></span>
-              <span class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
+              <span class="tech-badge" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
+              <span class="tech-badge" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" /></span>
+              <span class="tech-badge" title="MongoDB"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /></span>
+              <span class="tech-badge" title="Tailwind CSS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
             </div>
-            <a href="#contact" class="project-preview-link">Preview &nearr;</a>
+            <div class="project-actions">
+              <a href="javascript:void(0)" class="project-btn btn-preview" id="btn-preview-vijay">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview Screenshots
+              </a>
+            </div>
           </div>
         </div>
+      <!-- Aesthetic Fitness Project Card -->
+      <div class="project-card card-reveal" id="aesthetic-fitness-card">
+        <div class="project-preview">
+          <div class="carousel-track" id="aesthetic-carousel-track">
+            <div class="carousel-slide active" data-index="0">
+              <img src="assets/aesthetic-screenshot-1.jpg" loading="lazy" alt="Aesthetic Fitness - Dashboard">
+            </div>
+            <div class="carousel-slide" data-index="1">
+              <img src="assets/aesthetic-screenshot-2.jpg" loading="lazy" alt="Aesthetic Fitness - Member Management">
+            </div>
+            <div class="carousel-slide" data-index="2">
+              <img src="assets/aesthetic-screenshot-3.jpg" loading="lazy" alt="Aesthetic Fitness - Analytics">
+            </div>
+            <div class="carousel-slide" data-index="3">
+              <img src="assets/aesthetic-screenshot-4.jpg" loading="lazy" alt="Aesthetic Fitness - Payments">
+            </div>
+          </div>
+          <div class="carousel-indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+            <span class="indicator" data-index="3"></span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-header-row">
+            <img src="assets/aesthetic-logo.jpg" alt="Aesthetic Fitness Logo" class="project-logo">
+            <div>
+              <h3 class="project-title">Aesthetic Fitness</h3>
+            </div>
+          </div>
+          <p class="project-desc">A custom multi-branch gym management system developed for Aesthetic Fitness, featuring branch management, QR attendance, payment tracking, analytics, and a centralized dashboard for seamless daily operations.</p>
+          <div class="project-tech-row">
+            <span class="tech-badge" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /></span>
+            <span class="tech-badge" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" /></span>
+            <span class="tech-badge" title="MongoDB"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /></span>
+            <span class="tech-badge" title="Tailwind CSS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /></span>
+          </div>
+          <div class="project-actions">
+            <a href="javascript:void(0)" class="project-btn btn-preview" id="btn-preview-aesthetic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11z"/><circle cx="12" cy="12" r="3"/></svg>
+              Preview Screenshots
+            </a>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -390,7 +436,177 @@
 
   <div class="custom-cursor" id="cursor"></div>
   <div class="custom-cursor-dot" id="cursorDot"></div>
+
+  <!-- ========== LIGHTBOX GALLERY ========== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">&lsaquo;</button>
+    <div class="lightbox-content" id="lightboxContent">
+      <img id="lightboxImg" src="" alt="Vijay Fitness Preview">
+    </div>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next">&rsaquo;</button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
   <script src="script.js"></script>
   <script src="3d-loader.js?v=7"></script>
+
+  <script>
+    // --- VIJAY FITNESS CAROUSEL & LIGHTBOX JS ---
+    const screenshots = [
+      { src: 'assets/vijay-screenshot-1.jpg', caption: 'Vijay Fitness - Revenue & collections dashboard with month-by-month history' },
+      { src: 'assets/vijay-screenshot-2.jpg', caption: 'Vijay Fitness - Pending member fees with direct Mark Paid, Remind and Call actions' },
+      { src: 'assets/vijay-screenshot-3.jpg', caption: 'Vijay Fitness - Add New Member drawer with package configurations and customized membership plans' },
+      { src: 'assets/vijay-screenshot-4.jpg', caption: 'Vijay Fitness - Full interactive Member Directory showing package plans and active statuses' }
+    ];
+
+    let currentSlide = 0;
+    let carouselInterval = null;
+    const carouselTrack = document.getElementById('vijay-carousel-track');
+    const slides = Array.from(carouselTrack.getElementsByClassName('carousel-slide'));
+    const indicators = Array.from(document.querySelectorAll('.carousel-indicators .indicator'));
+
+    function goToSlide(index) {
+      if (index < 0 || index >= screenshots.length) return;
+      slides[currentSlide].classList.remove('active');
+      indicators[currentSlide].classList.remove('active');
+      
+      currentSlide = index;
+      
+      slides[currentSlide].classList.add('active');
+      indicators[currentSlide].classList.add('active');
+    }
+
+    // Auto cycling on hover
+    const projectCard = document.getElementById('vijay-fitness-card');
+    
+    function startCarousel() {
+      if (carouselInterval) clearInterval(carouselInterval);
+      carouselInterval = setInterval(() => {
+        let nextIndex = (currentSlide + 1) % screenshots.length;
+        goToSlide(nextIndex);
+      }, 2500);
+    }
+
+    function stopCarousel() {
+      if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+      }
+    }
+
+    projectCard.addEventListener('mouseenter', startCarousel);
+    projectCard.addEventListener('mouseleave', stopCarousel);
+    
+    // Tap support on mobile: cycles on click
+    carouselTrack.addEventListener('click', (e) => {
+      // If user clicked the slide image specifically, open lightbox instead of cycling
+      if (e.target.tagName === 'IMG') {
+        openLightbox(currentSlide);
+      } else {
+        let nextIndex = (currentSlide + 1) % screenshots.length;
+        goToSlide(nextIndex);
+      }
+    });
+
+    indicators.forEach((ind) => {
+      ind.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const index = parseInt(ind.getAttribute('data-index'), 10);
+        goToSlide(index);
+      });
+    });
+
+    // --- LIGHTBOX GALLERY ---
+    let lightboxIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Lock background scroll
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function nextLightboxImage() {
+      lightboxIndex = (lightboxIndex + 1) % screenshots.length;
+      updateLightbox();
+    }
+
+    function prevLightboxImage() {
+      lightboxIndex = (lightboxIndex - 1 + screenshots.length) % screenshots.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      const current = screenshots[lightboxIndex];
+      lightboxImg.style.opacity = '0';
+      setTimeout(() => {
+        lightboxImg.src = current.src;
+        lightboxCaption.textContent = current.caption;
+        lightboxCounter.textContent = `${lightboxIndex + 1} / ${screenshots.length}`;
+        lightboxImg.style.opacity = '1';
+      }, 150);
+    }
+
+    // Event Listeners
+    document.getElementById('btn-preview-vijay').addEventListener('click', (e) => {
+      e.preventDefault();
+      openLightbox(currentSlide);
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxNext').addEventListener('click', nextLightboxImage);
+    document.getElementById('lightboxPrev').addEventListener('click', prevLightboxImage);
+
+    // Close on click outside
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target === document.getElementById('lightboxContent')) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard Arrow Keys
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextLightboxImage();
+      if (e.key === 'ArrowLeft') prevLightboxImage();
+    });
+
+    // Swipe Gestures for Mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 55;
+      if (touchEndX < touchStartX - threshold) {
+        // Swipe Left -> Next
+        nextLightboxImage();
+      }
+      if (touchEndX > touchStartX + threshold) {
+        // Swipe Right -> Prev
+        prevLightboxImage();
+      }
+    }
+  </script>
 </body>
 </html>
