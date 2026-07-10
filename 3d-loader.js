@@ -49,6 +49,8 @@ function initThreeScene() {
   scene.fog = new THREE.FogExp2(0x020209, 0.022);
   const stage = new THREE.Group();
   scene.add(stage);
+  
+  let phoneGroup, tabletGroup, hpGroup;
 
   /* ── CAMERA ── */
   const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
@@ -76,6 +78,19 @@ function initThreeScene() {
     const scale = isMobile ? Math.min(Math.max(w / 390, 0.78), 0.92) : (isShort ? 0.9 : 0.96);
     stage.scale.setScalar(scale);
     stage.position.set(0, isMobile ? -0.12 : -0.24, isMobile ? -0.35 : -0.15);
+
+    // Reposition devices closer to the center on mobile/phone screens so they fit the narrow aspect ratio
+    if (phoneGroup && tabletGroup && hpGroup) {
+      if (isMobile) {
+        phoneGroup.position.set(-1.25, 1.26, 0.3);
+        tabletGroup.position.set(1.25, 1.56, 0.25);
+        hpGroup.position.set(1.35, 0.61, 1.1);
+      } else {
+        phoneGroup.position.set(-2.18, 1.26, 0.18);
+        tabletGroup.position.set(2.2, 1.56, 0.08);
+        hpGroup.position.set(2.35, 0.61, 1.1);
+      }
+    }
   }
 
   frameScene();
@@ -341,8 +356,8 @@ function initThreeScene() {
   laptopGroup.add(lBase);
 
   // Keyboard recess (dark inset)
-  const lKeyboard = mesh(new THREE.BoxGeometry(2.4, 0.005, 1.5), new THREE.MeshStandardMaterial({ color:0x0a0a0a, roughness:0.8 }));
-  lKeyboard.position.set(0, 0.09, -0.05);
+  const lKeyboard = mesh(new THREE.BoxGeometry(2.4, 0.005, 1.2), new THREE.MeshStandardMaterial({ color:0x0a0a0a, roughness:0.8 }));
+  lKeyboard.position.set(0, 0.09, -0.2);
   laptopGroup.add(lKeyboard);
 
   const keyMat = new THREE.MeshStandardMaterial({ color:0x1f1f24, metalness:0.25, roughness:0.55 });
@@ -421,7 +436,7 @@ function initThreeScene() {
   /* ════════════════════════════════════════════════════════════════════════
      SMARTPHONE
   ════════════════════════════════════════════════════════════════════════ */
-  const phoneGroup = new THREE.Group();
+  phoneGroup = new THREE.Group();
 
   // Body
   const pBody = mesh(rBox(0.72, 1.44, 0.085), matAluminium);
@@ -456,7 +471,7 @@ function initThreeScene() {
   /* ════════════════════════════════════════════════════════════════════════
      TABLET
   ════════════════════════════════════════════════════════════════════════ */
-  const tabletGroup = new THREE.Group();
+  tabletGroup = new THREE.Group();
 
   const tBody = mesh(rBox(1.55, 2.05, 0.09), matAluminium);
   tabletGroup.add(tBody);
@@ -484,7 +499,7 @@ function initThreeScene() {
   /* ════════════════════════════════════════════════════════════════════════
      HEADPHONES
   ════════════════════════════════════════════════════════════════════════ */
-  const hpGroup = new THREE.Group();
+  hpGroup = new THREE.Group();
 
   // Compact premium headset, resting flat on the desk
   const bandGeo = new THREE.TorusGeometry(0.42, 0.045, 14, 56, Math.PI);
