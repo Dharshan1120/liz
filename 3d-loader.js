@@ -65,27 +65,28 @@ function initThreeScene() {
     const isShort = h < 720;
 
     camera.aspect = aspect;
-    camera.fov = isMobile ? 50 : 42;
+    camera.fov = isMobile ? 44 : 42;
     cameraBase.set(
       0,
-      isMobile ? 2.1 : 2.25,
-      isMobile ? 6.9 : (isShort ? 6.15 : 5.75)
+      isMobile ? 1.75 : 2.25,
+      isMobile ? 5.2 : (isShort ? 6.15 : 5.75)
     );
     camera.position.copy(cameraBase);
-    cameraTarget.set(0, isMobile ? 0.72 : 0.62, 0);
+    cameraTarget.set(0, isMobile ? 0.58 : 0.62, 0);
     camera.updateProjectionMatrix();
 
-    const scale = isMobile ? Math.min(Math.max(w / 390, 0.78), 0.92) : (isShort ? 0.9 : 0.96);
+    const scale = isMobile ? Math.min(Math.max(w / 390, 0.82), 0.96) : (isShort ? 0.9 : 0.96);
     stage.scale.setScalar(scale);
-    stage.position.set(0, isMobile ? -0.12 : -0.24, isMobile ? -0.35 : -0.15);
+    stage.position.set(0, isMobile ? -0.08 : -0.24, isMobile ? -0.2 : -0.15);
 
-    // Reposition devices closer to the center on mobile/phone screens so they fit the narrow aspect ratio
+    // On mobile: hide phone & tablet, keep only laptop + headphones
     if (phoneGroup && tabletGroup && hpGroup) {
       if (isMobile) {
-        phoneGroup.position.set(-1.25, 1.26, 0.3);
-        tabletGroup.position.set(1.25, 1.56, 0.25);
-        hpGroup.position.set(1.35, 0.61, 1.1);
+        phoneGroup.visible = false;
+        tabletGroup.visible = false;
       } else {
+        phoneGroup.visible = true;
+        tabletGroup.visible = true;
         phoneGroup.position.set(-2.18, 1.26, 0.18);
         tabletGroup.position.set(2.2, 1.56, 0.08);
         hpGroup.position.set(2.35, 0.61, 1.1);
@@ -113,8 +114,21 @@ function initThreeScene() {
     return new THREE.CanvasTexture(c);
   }
 
-  /* Laptop Screen – LIZ Portfolio Hero */
-  const laptopTex = makeScreenTexture((ctx, w, h) => {
+  /* Laptop Screen – LIZ Portfolio Hero (interactive) */
+  const SCREEN_W = 820, SCREEN_H = 520;
+  const laptopScreenCanvas = document.createElement('canvas');
+  laptopScreenCanvas.width = SCREEN_W;
+  laptopScreenCanvas.height = SCREEN_H;
+  const laptopScreenCtx = laptopScreenCanvas.getContext('2d');
+
+  // Button hit-areas on the 820×520 canvas
+  const screenButtons = [
+    { id: 'start',    x: 24,  y: 300, w: 130, h: 36, target: '#contact'  },
+    { id: 'work',     x: 168, y: 300, w: 110, h: 36, target: '#projects' },
+    { id: 'letstalk', x: 740, y: 16,  w: 64,  h: 20, target: '#contact'  }
+  ];
+
+  function drawLaptopScreen(ctx, w, h) {
     // BG
     ctx.fillStyle = '#07070d';
     ctx.fillRect(0, 0, w, h);
@@ -179,7 +193,33 @@ function initThreeScene() {
       ctx.font = '11px Inter';
       ctx.fillText(l, x, h-18);
     });
-  }, 820, 520);
+  }
+
+  // Draw initial screen and save the base image for hover restore
+  drawLaptopScreen(laptopScreenCtx, SCREEN_W, SCREEN_H);
+  const laptopBaseImageData = laptopScreenCtx.getImageData(0, 0, SCREEN_W, SCREEN_H);
+  const laptopTex = new THREE.CanvasTexture(laptopScreenCanvas);
+
+  // Highlight a button on the laptop screen texture
+  let currentHoveredBtn = null;
+  function highlightScreenButton(btnId) {
+    if (btnId === currentHoveredBtn) return;
+    currentHoveredBtn = btnId;
+    // Restore base image
+    laptopScreenCtx.putImageData(laptopBaseImageData, 0, 0);
+    if (btnId) {
+      const btn = screenButtons.find(b => b.id === btnId);
+      if (btn) {
+        // Draw glow highlight overlay
+        laptopScreenCtx.fillStyle = 'rgba(255,255,255,0.18)';
+        laptopScreenCtx.fillRect(btn.x, btn.y, btn.w, btn.h);
+        laptopScreenCtx.strokeStyle = 'rgba(255,255,255,0.6)';
+        laptopScreenCtx.lineWidth = 2;
+        laptopScreenCtx.strokeRect(btn.x, btn.y, btn.w, btn.h);
+      }
+    }
+    laptopTex.needsUpdate = true;
+  }
 
   /* Phone Screen – Mobile Homepage */
   const phoneTex = makeScreenTexture((ctx, w, h) => {
@@ -684,4 +724,58 @@ function initThreeScene() {
   }
 
   animate();
+
+  /* ════════════════════════════════════════════════════════════════════════
+     INTERACTIVE LAPTOP SCREEN BUTTONS (Raycasting)
+  ════════════════════════════════════════════════════════════════════════ */
+  const raycaster = new THREE.Raycaster();
+  const rayMouse = new THREE.Vector2();
+
+  function hitTestScreen(clientX, clientY) {
+    const rect = container.getBoundingClientRect();
+    rayMouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    rayMouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(rayMouse, camera);
+    const hits = raycaster.intersectObject(lScreen, false);
+    if (hits.length > 0 && hits[0].uv) {
+      const uv = hits[0].uv;
+      const cx = uv.x * SCREEN_W;
+      const cy = (1 - uv.y) * SCREEN_H;
+      for (const btn of screenButtons) {
+        if (cx >= btn.x && cx <= btn.x + btn.w && cy >= btn.y && cy <= btn.y + btn.h) {
+          return btn;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Hover – change cursor & highlight button on texture
+  container.addEventListener('mousemove', (e) => {
+    const btn = hitTestScreen(e.clientX, e.clientY);
+    container.style.cursor = btn ? 'pointer' : '';
+    highlightScreenButton(btn ? btn.id : null);
+  });
+
+  // Click – navigate to target section
+  container.addEventListener('click', (e) => {
+    const btn = hitTestScreen(e.clientX, e.clientY);
+    if (btn) {
+      const el = document.querySelector(btn.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  // Touch support for mobile
+  container.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length > 0) {
+      const touch = e.changedTouches[0];
+      const btn = hitTestScreen(touch.clientX, touch.clientY);
+      if (btn) {
+        e.preventDefault();
+        const el = document.querySelector(btn.target);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
 }
