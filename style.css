@@ -65,12 +65,12 @@ body {
 /* ========== NAVBAR ========== */
 .navbar {
   position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-  width: min(90%, 900px);
+  width: min(95%, 900px);
   display: flex; align-items: center; justify-content: space-between;
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
-  border-radius: 100px; padding: 12px 24px;
+  border-radius: 100px; padding: 10px 20px;
   z-index: 1000;
   transition: var(--transition);
 }
@@ -78,6 +78,11 @@ body {
   background: rgba(5, 5, 5, 0.95);
   border-color: var(--border-glow);
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 .nav-hamburger {
   background: none; border: none; cursor: pointer;
@@ -89,15 +94,15 @@ body {
   transition: var(--transition);
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 4px;
-  font-family: var(--font-main); font-weight: 800;
-  font-size: 1.5rem; letter-spacing: -0.02em;
+  display: flex; align-items: center;
 }
-.logo-text {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+.logo-img {
+  height: 38px;
+  width: auto;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: block;
 }
-.logo-dot { color: var(--accent-purple); font-size: 0.6rem; margin-left: 2px; }
 .nav-cta {
   background: var(--bg-card2); color: var(--text-white);
   padding: 10px 22px; border-radius: 100px;
