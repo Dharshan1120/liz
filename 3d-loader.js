@@ -68,16 +68,16 @@ function initThreeScene() {
     camera.fov = isMobile ? 45 : 42;
     cameraBase.set(
       0,
-      isMobile ? 1.45 : 2.25,
-      isMobile ? 4.15 : (isShort ? 6.15 : 5.75)
+      isMobile ? 1.6 : 2.25,
+      isMobile ? 4.75 : (isShort ? 6.15 : 5.75)
     );
     camera.position.copy(cameraBase);
-    cameraTarget.set(0, isMobile ? 0.52 : 0.62, 0);
+    cameraTarget.set(0, isMobile ? 0.56 : 0.62, 0);
     camera.updateProjectionMatrix();
 
-    const scale = isMobile ? Math.min(Math.max(w / 390, 0.95), 1.08) : (isShort ? 0.9 : 0.96);
+    const scale = isMobile ? Math.min(Math.max(w / 390, 0.86), 0.96) : (isShort ? 0.9 : 0.96);
     stage.scale.setScalar(scale);
-    stage.position.set(0, isMobile ? -0.15 : -0.24, isMobile ? -0.2 : -0.15);
+    stage.position.set(0, isMobile ? -0.10 : -0.24, isMobile ? -0.2 : -0.15);
 
     // On mobile: hide phone & tablet, keep only laptop + headphones
     if (phoneGroup && tabletGroup && hpGroup) {

@@ -97,10 +97,11 @@ body {
   display: flex; align-items: center;
 }
 .logo-img {
-  height: 38px;
-  width: auto;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: block;
 }
 .nav-cta {
